@@ -5,8 +5,7 @@ Este repositório contém o código-fonte e a documentação do trabalho da disc
 Este projeto não utiliza frameworks PHP como Laravel, conforme exigido. A estrutura segue o padrão MVC.
 
 ## 👨‍💻 Integrantes do Grupo
-Eduardo Massuqueto de Andrade
-Thomas Valeranovicz
+Eduardo Massuqueto de Andrade | Thomas Valeranovicz
 
 ## 💡 Descrição do Projeto
 O projeto consiste em um aplicativo web com foco na aquisição de jogos digitais, simulando uma loja virtual de games. 
