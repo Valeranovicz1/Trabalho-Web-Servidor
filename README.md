@@ -25,8 +25,24 @@ Além disso, o sistema possui um painel administrativo, onde o administrador tem
   - Remover jogos da plataforma.
   - Editar jogos da plataforma(Funcionalidade faltante);
 
-## ⚙️ Instalação e Configuração
-...
+# ⚙️ Instalação e Configuração
+  - PHP 8.0 ou superior;
+  - Git instalado;
+  - MySQL ou MariaDB;
+  - Servidor Web (Apache ou similar);
+  - Navegador moderno.
+
+## Copie o repositório
+<pre>git clone https://github.com/Valeranovicz1/Trabalho-Web-Servidor.git 
+cd Trabalho-Web-Servidor.git </pre>
+
+## Inicie o servidor
+Se estiver usando XAMPP:
+Inicie o Apache e o MySQL;
+
+Acesse no navegador:
+http://localhost/TrabalhoWebServidor/index.php
+  
 
 
 ## 📂 Estrutura do Projeto
