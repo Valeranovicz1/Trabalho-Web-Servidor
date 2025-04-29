@@ -1,17 +1,17 @@
-#Projeto Web em PHP - ET Games
+# Projeto Web em PHP - ET Games
 
-#📋 Informações Gerais
+## 📋 Informações Gerais
 Este repositório contém o código-fonte e a documentação do trabalho da disciplina de Web-Servidor, desenvolvido conforme as diretrizes fornecidas pelo professor.
 Este projeto não utiliza frameworks PHP como Laravel, conforme exigido. A estrutura segue o padrão MVC.
 
-#👨‍💻 Integrantes do Grupo
+## 👨‍💻 Integrantes do Grupo
 Eduardo Massuqueto de Andrade
 Thomas Valeranovicz
 
-#💡 Descrição do Projeto
+## 💡 Descrição do Projeto
 O projeto consiste em um aplicativo web com foco na aquisição de jogos digitais, simulando uma loja virtual de games. 
 
-#✅ Funcionalidades
+## ✅ Funcionalidades
 Os usuários podem se cadastrar, realizar login e acessar diversas funcionalidades, como:
 
   - Adicionar jogos à sua biblioteca pessoal;
@@ -25,9 +25,9 @@ Além disso, o sistema possui um painel administrativo, onde o administrador tem
   - Listar os jogos já existentes;
   - Remover jogos da plataforma.
 
-#⚙️ Instalação e Configuração
+## ⚙️ Instalação e Configuração
 ...
 
 
-#📂 Estrutura do Projeto
+## 📂 Estrutura do Projeto
 ...
