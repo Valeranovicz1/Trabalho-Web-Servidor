@@ -23,6 +23,7 @@ Além disso, o sistema possui um painel administrativo, onde o administrador tem
   - Criar novos jogos no catálogo;
   - Listar os jogos já existentes;
   - Remover jogos da plataforma.
+  - Editar jogos da plataforma(Funcionalidade faltante);
 
 ## ⚙️ Instalação e Configuração
 ...
