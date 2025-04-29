@@ -1,0 +1,471 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #21272e;
+    color: #333;
+}
+
+
+
+header h1 {
+    margin: 0;
+    font-size: 2.5em;
+}
+
+nav {
+    display: flex; 
+    justify-content: center; 
+    align-items: center; 
+    padding: 0.5rem 0;
+    gap: 1rem; 
+}
+
+nav a {
+    color: #00ff00;
+    text-decoration: none;
+    margin: 0 1rem;
+    font-weight: bold;
+    font-size: 30px;
+    transition: transform 0.3s ease, color 0.3s ease;
+}
+
+nav a:hover {
+    transform: scale(1.1); 
+    color: #028202; 
+}
+
+main {
+    padding: 20px;
+    max-width: none;
+    margin: 0 auto;
+    width: 100%;
+}
+
+section {
+    margin-bottom: 20px;
+}
+
+section h2 {
+    color: #ffffff;
+    border-bottom: 2px solid #ddd;
+    padding-bottom: 5px;
+}
+
+footer {
+    text-align: center;
+    padding: 10px 0;
+    color: #fff;
+    margin-top: 20px;
+}
+
+.suporte-container {
+    max-width: 800px;
+    margin: 50px auto;
+    background: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.suporte-container h1 {
+    text-align: center;
+    color: #333;
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 5px;
+    color: #555;
+}
+
+.form-group input, .form-group textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.form-group textarea {
+    resize: vertical;
+    height: 100px;
+}
+
+.btn-submit {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    background-color: #007BFF;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.btn-submit:hover {
+    background-color: #0056b3;
+}
+
+.logo-container {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 10px 20px;
+}
+
+.logo {
+    width: 100px; 
+    height: auto;
+}
+.logo-text {
+    width: 260px;
+    height: auto; 
+    margin: 0 auto;
+    display: block;
+    transform: translateX(-50px); 
+}
+
+.carousel-container {
+    position: relative;
+    max-width: 80%; 
+    margin: 20px auto;
+    overflow: hidden;
+    background-color: #2a475e;
+    border-radius: 8px;
+    padding: 20px;
+}
+
+.carousel {
+    display: flex;
+    gap: 10%;
+    transition: transform 0.5s ease-in-out;
+}
+
+.carousel-item {
+    min-width: 20%; 
+    text-align: center;
+    padding: 10px;
+    box-sizing: border-box;
+    transition: transform 0.3s ease-in-out;
+}
+
+.carousel-item img {
+    width: 300px; 
+    height: 230px;
+    object-fit: cover;
+    border-radius: 8px;
+    margin-bottom: 10px;
+}
+
+.carousel-item p {
+    margin: 5px 0;
+    color: #c7d5e0;
+    padding-left: 50px; 
+}
+
+.carousel-item:hover {
+    transform: scale(1.1); 
+    z-index: 5; 
+}
+
+.carousel-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: #171a21;
+    color: #c7d5e0;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    font-size: 18px;
+    border-radius: 4px;
+    z-index: 10;
+}
+
+.carousel-btn:hover {
+    background-color: #66c0f4;
+}
+
+.prev-btn {
+    left: 10px;
+}
+
+.next-btn {
+    right: 10px;
+}
+
+.modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8); 
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.modal-content {
+    background-color: #1e1e1e;
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+    color: #ffffff;
+    width: 80%;
+    max-width: 400px;
+    position: relative;
+}
+
+.modal-content img {
+    width: 200px; 
+    height: 200px; 
+    object-fit: cover;
+    border-radius: 8px;
+    margin-bottom: 15px;
+}
+
+.modal-content h2 {
+    font-size: 24px;
+    margin-bottom: 10px;
+    color: #00ff00;
+}
+
+.modal-content p {
+    font-size: 16px;
+    margin-bottom: 10px;
+    color: #c7d5e0;
+}
+
+.add-to-cart-button {
+    background-color: #00ff00;
+    color: #121212;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    margin-top: 15px;
+}
+
+.add-to-cart-button:hover {
+    background-color: #028202;
+}
+
+.close {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    font-size: 24px;
+    font-weight: bold;
+    color: #ffffff;
+    cursor: pointer;
+}
+
+.account-menu {
+    position: absolute;
+    top: 30px;
+    right: 50px; 
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.account-icon {
+    width: 60px;
+    height: 60px;
+    cursor: pointer;
+    border-radius: 50%;
+    transition: transform 0.2s ease-in-out;
+}
+
+.account-icon:hover {
+    transform: scale(1.1);
+}
+
+.account-dropdown {
+    display: none;
+    position: absolute;
+    top: 50px;
+    right: 0; 
+    background-color: #1e1e1e;
+    border: 1px solid #00ff00;
+    border-radius: 5px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+    z-index: 1000;
+    width: 150px;
+    text-align: center;
+}
+
+.account-dropdown a {
+    display: block;
+    padding: 10px;
+    color: #ffffff;
+    text-decoration: none;
+    font-size: 14px;
+    border-bottom: 1px solid #00ff00;
+}
+
+.account-dropdown a:last-child {
+    border-bottom: none;
+}
+
+.account-dropdown a:hover {
+    background-color: #00ff00;
+    color: #121212;
+}
+
+.suporte-container {
+    max-width: 800px;
+    margin: 50px auto;
+    background: #2a2a2a;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.8);
+}
+
+.suporte-container h1 {
+    text-align: center;
+    color: #00ff00; 
+    margin-bottom: 20px;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 8px;
+    color: #c7d5e0; 
+}
+
+.form-group input, .form-group textarea {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #444;
+    border-radius: 5px;
+    background-color: #1e1e1e; 
+    color: #ffffff; 
+}
+
+.form-group input::placeholder,
+.form-group textarea::placeholder {
+    color: #888; 
+}
+
+.form-group textarea {
+    resize: vertical;
+    height: 120px;
+}
+
+.btn-submit {
+    display: block;
+    width: 100%;
+    padding: 12px;
+    background-color: #00ff00;
+    color: #121212; 
+    border: none;
+    border-radius: 5px;
+    font-size: 18px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.btn-submit:hover {
+    background-color: #028202;
+}
+
+.sobre-container {
+    max-width: 1000px;
+    margin: 50px auto;
+    padding: 30px;
+    background-color: #1e1e1e;
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.8);
+}
+
+.sobre-container section {
+    margin-bottom: 40px;
+}
+
+.sobre-container h2 {
+    font-size: 28px;
+    color: #00ff00;
+    margin-bottom: 15px;
+    border-bottom: 2px solid #00ff00;
+    padding-bottom: 5px;
+}
+
+.sobre-container p, .sobre-container ul {
+    font-size: 18px;
+    color: #c7d5e0;
+    line-height: 1.6;
+}
+
+.sobre-container ul {
+    list-style-type: disc;
+    padding-left: 20px;
+}
+
+.sobre-container ul li {
+    margin-bottom: 10px;
+}
+
+.empresa-painel-container {
+    max-width: 900px;
+    margin: 40px auto;
+    padding: 30px;
+    background-color: #21272e;
+    color: #c7d5e0;
+    border-radius: 10px;
+    box-shadow: 0 0 15px rgba(0, 255, 0, 0.15);
+}
+
+.empresa-logo {
+    width: 120px;
+    display: block;
+    margin: 0 auto 20px;
+}
+
+.empresa-painel-container h1,
+.empresa-painel-container h2,
+.empresa-painel-container h3,
+.empresa-painel-container label {
+    color: #00ff00;
+}
+
+.empresa-painel-container input,
+.empresa-painel-container button {
+    width: 100%;
+    padding: 10px;
+    margin: 6px 0 12px;
+    border-radius: 5px;
+    border: 1px solid #00ff00;
+    background-color: #1e1e1e;
+    color: #c7d5e0;
+    font-size: 16px;
+}
+
+.empresa-painel-container button {
+    background-color: #00ff00;
+    color: #121212;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.empresa-painel-container button:hover {
+    background-color: #028202;
+}
+
+.empresa-painel-container form {
+    margin-bottom: 30px;
+}
