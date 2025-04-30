@@ -46,4 +46,8 @@ http://localhost/TrabalhoWebServidor/index.php
 
 
 ## 📂 Estrutura do Projeto
-...
+Model:Contém as classes responsáveis pela representação dos dados e regras de negócio da aplicação. 
+controllers: Contém os arquivos responsáveis pela lógica da aplicação.
+view:Inclui os arquivos de interface do usuário (HTML e PHP).
+storage: Contém os arquivos de armazenamento de dados.
+assets:Contém os recursos estáticos da aplicação (CSS,JS e Imagens).
