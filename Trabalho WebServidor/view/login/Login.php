@@ -1,37 +1,38 @@
 <?php
-    
-    if (session_status() === PHP_SESSION_NONE) {
-        session_start();
-    }
 
-    if (isset($_SESSION['usuario'])) {
-        if ($_SESSION['usuario']['tipo'] === 'empresa') {
-            header('Location: ../painel/painelEmpresa.php');
-        } else {
-            header('Location: ../painel/painelCliente.php');
-        }
-        exit;
-    }
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
 
-    require_once __DIR__ . '/../../controllers/LoginController.php';
-
-    if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-        $loginController = new LoginController();
-        $loginController->login();
+if (isset($_SESSION['usuario'])) {
+    if ($_SESSION['usuario']['tipo'] === 'empresa') {
+        header('Location: ../painel/painelEmpresa.php');
+    } else {
+        header('Location: ../painel/painelCliente.php');
     }
+    exit;
+}
+
+require_once __DIR__ . '/../../controllers/LoginController.php';
+
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $loginController = new LoginController();
+    $loginController->login();
+}
 
 ?>
 
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login - ET Games</title>
-    <link rel="icon" href="/assets/img/logo/logo.png" type="image/png">
+    <link rel="icon" href="../../assets/img/logo/logo.png" type="image/png">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-SgOJa3DmI69IUzQ2PVdRZhwQ+dy64/BUtbMJw1MZ8t5HZApcHrRKUc4W0kG879m7" crossorigin="anonymous">
     <style>
         body {
-            font-family: 'Arial', sans-serif;
             background-color: #121212;
             color: #ffffff;
             display: flex;
@@ -61,7 +62,6 @@
         .logo h1 {
             font-size: 24px;
             font-weight: bold;
-            color: #00ff00;
             margin: 10px 0 0;
             font-family: 'Courier New', Courier, monospace;
         }
@@ -83,30 +83,18 @@
             box-shadow: 0 0 5px #00ff00;
         }
 
-        .login-button, .register-button {
-            background-color: #00ff00;
-            color: #121212;
-            border: none;
-            padding: 10px 20px;
-            border-radius: 5px;
-            font-size: 16px;
-            cursor: pointer;
-            width: 100%;
-            margin-top: 10px;
-        }
 
-        .login-button:hover, .register-button:hover {
-            background-color: #028202;
-        }
+
     </style>
 </head>
+
 <body>
     <div class="login-container">
         <div class="logo">
             <img src="../../assets/img/logo/logo.png" alt="ET Games Logo">
-            <h1>ET Games</h1>
+            <h1 class="text-success">ET Games</h1>
         </div>
-        <h2>Login</h2>
+        <h2 class="text-light">Login</h2>
 
         <?php if (isset($_GET['erro'])): ?>
             <div style="color: red; margin-bottom: 10px;">
@@ -130,14 +118,18 @@
 
         <form action="" method="POST">
             <div class="form-group">
-                <input type="text" id="nickname" name="nickname" placeholder="Nickname" required>
+                <div class="mb-3">
+                    <input type="text" id="nickname" name="nickname" placeholder="Nickname" required>
+                </div>
             </div>
+
             <div class="form-group">
                 <input type="password" id="senha" name="senha" placeholder="Senha" required>
             </div>
-            <button type="submit" class="login-button">Login</button>
-            <button type="button" class="register-button" onclick="window.location.href='../login/Registro.php'">Registrar</button>
+            <button type="submit" class="btn btn-success">Login</button>
+            <button type="button" class="btn btn-success" onclick="window.location.href='../login/Registro.php'">Registro</button>
         </form>
     </div>
 </body>
+
 </html>
