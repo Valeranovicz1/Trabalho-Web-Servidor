@@ -30,6 +30,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Registro - ET Games</title>
     <link rel="icon" href="../../assets/img/logo/logo.png" type="image/png">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-SgOJa3DmI69IUzQ2PVdRZhwQ+dy64/BUtbMJw1MZ8t5HZApcHrRKUc4W0kG879m7" crossorigin="anonymous">
     <style>
         body {
             font-family: 'Arial', sans-serif;
@@ -41,13 +42,12 @@
             height: 100vh;
             margin: 0;
         }
-
         .registro-container {
             text-align: center;
-            background-color: #1e1e1e;
+            background-color:rgb(26, 26, 26);
             padding: 20px;
             border-radius: 10px;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+            box-shadow: 0 4px 10px rgba(0, 110, 0, 0.5);
             width: 300px;
         }
 
@@ -103,7 +103,7 @@
         .back-icon img {
             width: 20px;
             height: 20px;
-            filter: brightness(300%);
+            filter: brightness(3000%);
             float: left;
         }
     </style>
@@ -115,10 +115,10 @@
         </a>
         <div class="logo">
             <img src="../../assets/img/logo/logo.png" alt="ET Games Logo">
-            <h1>ET Games</h1>
+            <h1 class="text-success">ET Games</h1>
         </div>
 
-        <h2>Registro</h2>
+        <h2 class="text-light">Registro</h2>
 
         <?php if (!empty($erro)): ?>
             <p style="color: red;"><?php echo htmlspecialchars($erro); ?></p>
@@ -140,7 +140,7 @@
             <div class="form-group">
                 <input type="date" id="data_nascimento" name="data_nascimento" required>
             </div>
-            <button type="submit" class="register-button">Registrar</button>
+            <button type="submit" class="btn btn-success">Registrar</button>
         </form>
     </div>
 </body>

@@ -34,7 +34,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <style>
         body {
             background-color: #121212;
-            color: #ffffff;
             display: flex;
             justify-content: center;
             align-items: center;
@@ -44,10 +43,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
         .login-container {
             text-align: center;
-            background-color: #1e1e1e;
+            background-color:rgb(26, 26, 26);
             padding: 20px;
             border-radius: 10px;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+            box-shadow: 0 4px 10px rgba(0, 110, 0, 0.5);
             width: 300px;
         }
 
@@ -82,9 +81,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             outline: none;
             box-shadow: 0 0 5px #00ff00;
         }
-
-
-
     </style>
 </head>
 
@@ -118,11 +114,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
         <form action="" method="POST">
             <div class="form-group">
-                <div class="mb-3">
-                    <input type="text" id="nickname" name="nickname" placeholder="Nickname" required>
-                </div>
+                <input type="text" id="nickname" name="nickname" placeholder="Nickname" required>
             </div>
-
             <div class="form-group">
                 <input type="password" id="senha" name="senha" placeholder="Senha" required>
             </div>

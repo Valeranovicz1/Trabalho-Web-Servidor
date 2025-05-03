@@ -159,4 +159,14 @@
     'data_nascimento' => '2025-04-15',
     'tipo' => 'cliente',
   ),
+  16 => 
+  array (
+    'id' => 17,
+    'nome' => 'Carlinhos',
+    'email' => 'cs@cs.com',
+    'nickname' => 'carlsoruan',
+    'senha' => '123',
+    'data_nascimento' => '2025-05-07',
+    'tipo' => 'cliente',
+  ),
 );
