@@ -4,11 +4,6 @@ if (session_status() === PHP_SESSION_NONE) {
     session_start();
 }
 
-if (!isset($_SESSION['usuario']) || $_SESSION['usuario']['tipo'] !== 'cliente') {
-    header('Location: ../view/login/login.php?erro=acesso_negado');
-    exit;
-}
-
 $nome = $_SESSION['usuario']['nome'] ?? 'Não definido';
 $email = $_SESSION['usuario']['email'] ?? 'Não definido';
 $nickname = $_SESSION['usuario']['nickname'] ?? 'Não definido';
