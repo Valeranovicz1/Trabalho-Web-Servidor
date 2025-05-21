@@ -65,22 +65,22 @@
 
     <h2 class="text-white">Cadastrar Novo Jogo</h2>
     <form method="post">
-        <label for="nome">Nome do Jogo:</label>
+        <label class="text-success" >Nome do Jogo:</label>
         <input type="text" id="nome" name="nome" required>
 
-        <label for="descricao">Descrição:</label>
+        <label class="text-success">Descrição:</label>
         <input type="text" id="descricao" name="descricao" required>
 
-        <label for="preco">Preço:</label>
+        <label class="text-success">Preço:</label>
         <input type="number" step="0.01" id="preco" name="preco" required>
 
-        <button type="submit" name="cadastrar">Cadastrar Jogo</button>
+        <button type="submit" name="cadastrar" class="btn btn-success">Cadastrar Jogo</button>
     </form>
 
 
-    <h2>Excluir Jogo</h2>
+    <h2 class="text-white">Excluir Jogo</h2>
     <form method="post">
-        <label for="nome_excluir">Selecione o jogo para excluir:</label>
+        <label class="text-success" for="nome_excluir">Selecione o jogo para excluir:</label>
         <select id="nome_excluir" name="nome_excluir" required>
             <?php foreach ($jogos as $jogo): ?>
                 <option value="<?php echo htmlspecialchars($jogo->nome); ?>">
@@ -88,11 +88,11 @@
                 </option>
             <?php endforeach; ?>
         </select>
-        <button type="submit" name="excluir">Excluir Jogo</button>
+        <button type="submit" name="excluir" class="btn btn-danger">Excluir Jogo</button>
     </form>
 
 
-    <h2>Listar Jogos</h2>
+    <h2 class="text-white">Listar Jogos</h2>
     <form method="post">
         <button type="submit" name="listar">Clique aqui para listar os jogos</button>
     </form>
