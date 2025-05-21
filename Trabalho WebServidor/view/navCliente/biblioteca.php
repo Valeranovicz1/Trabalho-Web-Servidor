@@ -9,10 +9,14 @@
         exit;
     }
 
-    include '../partials/header.php';
-?>
 
-<style>
+?>
+<head>
+    <meta charset="UTF-8">
+    <title>Biblioteca de Jogos</title>
+    <link rel="icon" href="../../assets/img/logo/logo.png" type="image/png">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
         .game-filter-section {
             margin-top: 20px;
             padding: 15px;
@@ -39,8 +43,6 @@
             padding: 8px 15px;
             border: none;
             border-radius: 4px;
-            background-color: #00ff00;
-            color: #121212;
             cursor: pointer;
             transition: background-color 0.3s ease;
         }
@@ -104,12 +106,17 @@
         }
         
     </style>
+</head>
+</body>
+<?php include '../partials/header.php'; ?>
+</body>
+    
 
 <main>
     <section class="game-filter-section">
-        <h2>Filtrar Jogos</h2>
+        <h2 class="text-success">Filtrar Jogos</h2>
         <form method="get" action="">
-            <label for="categoria">Categoria:</label>
+            <label class="text-white">Categoria:</label>
             <select name="categoria" id="categoria">
                 <option value="">Todas as Categorias</option>
                 <?php foreach ($categorias as $categoria): ?>
@@ -119,12 +126,12 @@
                     </option>
                 <?php endforeach; ?>
             </select>
-            <input type="submit" value="Filtrar">
+            <input type="submit" class="btn btn-success" value="Filtrar">
         </form>
     </section>
 
     <section class="game-grid-section">
-        <h2>Meus Jogos</h2>
+        <h2 class="text-success">Meus Jogos</h2>
         <div class="game-grid-container">
             
 
