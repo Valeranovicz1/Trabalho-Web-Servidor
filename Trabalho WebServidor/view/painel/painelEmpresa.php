@@ -37,8 +37,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ET Games</title>
-    <link rel="stylesheet" href="style.css">
-    <link rel="icon" href="../assets/img/logo/logo.png" type="image/png">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-SgOJa3DmI69IUzQ2PVdRZhwQ+dy64/BUtbMJw1MZ8t5HZApcHrRKUc4W0kG879m7" crossorigin="anonymous">
+    <link rel="stylesheet" href="../../assets/css/style-painel.css">
+    <link rel="icon" href="img/logo/logo.png" type="image/png">
     
 </head>
 <body>
@@ -47,7 +48,7 @@
     <div class="account-menu">
         <img src="../../assets/img/outros/myaccount.png" alt="Minha Conta" class="account-icon" onclick="toggleAccountMenu()">
         <div class="account-dropdown" id="accountDropdown">
-            <a href="../partials/MinhaConta.php">Ir para a conta</a>
+            <a href="../navCliente/MinhaConta.php">Ir para a conta</a>
             <a href="../../index.php?action=logout">Sair</a>
         </div>
     </div>
@@ -59,10 +60,10 @@
 </header>
 
 <div class="empresa-painel-container">
-    <h1>Painel da Empresa</h1>
+    <h1 class="text-success text-center mb-5">Painel da Empresa</h1>
 
 
-    <h2>Cadastrar Novo Jogo</h2>
+    <h2 class="text-white">Cadastrar Novo Jogo</h2>
     <form method="post">
         <label for="nome">Nome do Jogo:</label>
         <input type="text" id="nome" name="nome" required>
