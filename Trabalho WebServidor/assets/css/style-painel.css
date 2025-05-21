@@ -427,7 +427,7 @@ footer {
     background-color: #21272e;
     color: #c7d5e0;
     border-radius: 10px;
-    box-shadow: 0 0 15px rgba(0, 255, 0, 0.15);
+    box-shadow: 0 0 15px rgb(0, 255, 0);
 }
 
 .empresa-logo {
@@ -436,12 +436,6 @@ footer {
     margin: 0 auto 20px;
 }
 
-.empresa-painel-container h1,
-.empresa-painel-container h2,
-.empresa-painel-container h3,
-.empresa-painel-container label {
-    color: #00ff00;
-}
 
 .empresa-painel-container input,
 .empresa-painel-container button {
@@ -455,16 +449,9 @@ footer {
     font-size: 16px;
 }
 
-.empresa-painel-container button {
-    background-color: #00ff00;
-    color: #121212;
-    font-weight: bold;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-}
 
 .empresa-painel-container button:hover {
-    background-color: #028202;
+    background-color: #00ff00;
 }
 
 .empresa-painel-container form {
