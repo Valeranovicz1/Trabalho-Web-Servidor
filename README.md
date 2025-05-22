@@ -1,8 +1,7 @@
 # Projeto Web em PHP - ET Games
 
 ## 📋 Informações Gerais
-Este repositório contém o código-fonte e a documentação do trabalho da disciplina de Web-Servidor, desenvolvido conforme as diretrizes fornecidas pelo professor.
-Este projeto não utiliza frameworks PHP como Laravel, conforme exigido. A estrutura segue o padrão MVC.
+Este repositório contém o código-fonte e a documentação do trabalho da disciplina de Web-Servidor, desenvolvido conforme as diretrizes fornecidas pelo professor. A estrutura segue o padrão MVC.
 
 ## 👨‍💻 Integrantes do Grupo
 Eduardo Massuqueto de Andrade | Thomas Valeranovicz
