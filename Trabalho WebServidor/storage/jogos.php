@@ -1,6 +1,0 @@
-<?php
-
-$jogos = array (
-);
-
-?>
