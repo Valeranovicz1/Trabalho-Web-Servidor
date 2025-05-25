@@ -4,12 +4,27 @@ if (session_status() === PHP_SESSION_NONE) {
     session_start();
 }
 
+if (!defined('BASE_URL')) {
+    define('BASE_URL','/Trabalho-Web-Servidor');
+}
+
+$tipo = $_SESSION['usuario']['tipo'] ?? '';
 $nome = $_SESSION['usuario']['nome'] ?? 'Não definido';
 $email = $_SESSION['usuario']['email'] ?? 'Não definido';
 $nickname = $_SESSION['usuario']['nickname'] ?? 'Não definido';
 $data_nascimento = $_SESSION['usuario']['data_nascimento'] ?? 'Não definido';
 
+// define a URL de “voltar”
+if ($tipo === 'cliente') {
+    $backUrl = BASE_URL . '/loja';
+} elseif ($tipo === 'empresa') {
+    // aqui mudou para o path puro, sem o BASE_URL
+    $backUrl = '/painel/painelEmpresa.php';
+} else {
+    $backUrl = BASE_URL;
+}
 ?>
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -94,35 +109,39 @@ $data_nascimento = $_SESSION['usuario']['data_nascimento'] ?? 'Não definido';
 <body>
     
     <div class="container">
-    <a href="../login/Login.php" class="back-icon">
-            <img src="../../assets/img/outros/icovoltar.webp" alt="Voltar">
-        </a>
-        <img src="../../assets/img/logo/logo.png" alt="Logo" class="logo">
-        <img src="../../assets/img/outros/myaccount.png" alt="Foto de Perfil" class="profile-pic">
+        <!-- link de voltar -->
+       <!-- link de voltar dinâmico -->
+<a href="<?= $backUrl ?>" class="back-icon">
+    <img src="<?= BASE_URL ?>/assets/img/outros/icovoltar.webp" alt="Voltar">
+</a>
+        <!-- logo fixa -->
+        <img src="<?= BASE_URL ?>/assets/img/logo/logo.png" alt="Logo" class="logo">
+        <!-- foto de perfil -->
+        <img src="<?= BASE_URL ?>/assets/img/outros/myaccount.png" alt="Foto de Perfil" class="profile-pic">
+
         <h1 class="text-white">Minha Conta</h1>
         <div class="info">
             <label class="text-success">Nickname:</label>
-            <span><?php echo htmlspecialchars($nickname); ?></span>
+            <span><?= htmlspecialchars($nickname) ?></span>
         </div>
         <div class="info">
             <label class="text-success">Email:</label>
-            <span><?php echo htmlspecialchars($email); ?></span>
+            <span><?= htmlspecialchars($email) ?></span>
         </div>
         <div class="info">
             <label class="text-success">Nome:</label>
-            <span><?php echo htmlspecialchars($nome); ?></span>
+            <span><?= htmlspecialchars($nome) ?></span>
         </div>
         <div class="info">
             <label class="text-success">Data de Nascimento:</label>
-            <span><?php echo htmlspecialchars($data_nascimento); ?></span>
+            <span><?= htmlspecialchars($data_nascimento) ?></span>
         </div>
 
-        <form action="editarConta.php" method="GET">
+        <form action="<?= BASE_URL ?>/editar-conta" method="GET">
             <button type="submit" class="btn btn-success">Editar Perfil</button>
         </form>
-
     </div>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/js/bootstrap.min.js" integrity="sha384-VQqxDN0EQCkWoxt/0vsQvZswzTHUVOImccYmSyhJTp7kGtPed0Qcx8rK9h9YEgx+" crossorigin="anonymous"></script>
-</body>
 
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/js/bootstrap.min.js" …></script>
+</body>
 </html>

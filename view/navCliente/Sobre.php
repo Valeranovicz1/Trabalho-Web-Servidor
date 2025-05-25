@@ -1,4 +1,4 @@
-<?php include '../partials/header.php'; ?>
+<?php include_once __DIR__ . '/../partials/header.php'; ?>
 
 <!DOCTYPE html>
 <html lang="pt-BR">
@@ -129,7 +129,7 @@
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 
-<?php include '../partials/footer.php'; ?>
+<?php include_once __DIR__ . '/../partials/footer.php'; ?>
 
 </body>
 </html>

@@ -44,7 +44,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 }
 
 
-include '../partials/header.php';
+include_once __DIR__ . '/../partials/header.php';
 ?>
 
 <head>
@@ -97,4 +97,4 @@ include '../partials/header.php';
     </div>
 </body>
 
-<?php include '../partials/footer.php'; ?>
+<?php include_once __DIR__ . '/../partials/footer.php'; ?>

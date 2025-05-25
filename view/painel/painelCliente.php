@@ -16,7 +16,7 @@
     $jogosAcao = $jogoController->listaJogosCategoria('Ação');
     $jogosFPS = $jogoController->listaJogosCategoria('FPS');
 
-    include '../partials/header.php'; 
+    include_once __DIR__ . '/../partials/header.php'; 
 
 ?>
 
@@ -28,8 +28,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ET Games</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-SgOJa3DmI69IUzQ2PVdRZhwQ+dy64/BUtbMJw1MZ8t5HZApcHrRKUc4W0kG879m7" crossorigin="anonymous">
-    <link rel="stylesheet" href="../../assets/css/style-painel.css">
-    <link rel="icon" href="img/logo/logo.png" type="image/png">
+    <link rel="stylesheet" href="/Trabalho WebServidor/assets/css/style-painel.css">
+    <link rel="icon" href="/Trabalho WebServidor/assets/img/logo/logo.png" type="image/png">
 </head>
 
 <body>
@@ -102,6 +102,6 @@
     </div>
 </div>
 
-<script src="../../assets/js/scriptLoja.js" defer></script>
+<script src="/Trabalho WebServidor/assets/js/scriptLoja.js" defer></script>
 
-<?php include '../partials/footer.php';?>
+<?php include_once __DIR__ . '/../partials/footer.php';?>

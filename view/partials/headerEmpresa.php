@@ -45,16 +45,5 @@
               aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
-      <div class="collapse navbar-collapse" id="navbarNav">
-        <ul class="navbar-nav w-100 justify-content-center">
-          <li class="nav-item"><a class="link-success nav-link fs-3" href="<?= BASE_URL ?>/loja">Loja</a></li>
-          <li class="nav-item"><a class="link-success nav-link fs-3" href="<?= BASE_URL ?>/biblioteca">Biblioteca</a></li>
-          <li class="nav-item"><a class="link-success nav-link fs-3" href="<?= BASE_URL ?>/carrinho">Carrinho</a></li>
-          <li class="nav-item"><a class="link-success nav-link fs-3" href="<?= BASE_URL ?>/suporte">Suporte</a></li>
-          <li class="nav-item"><a class="link-success nav-link fs-3" href="<?= BASE_URL ?>/sobre">Sobre</a></li>
-        </ul>
-      </div>
-    </div>
   </nav>
-  <script src="/Trabalho WebServidor/assets/js/scriptLoja.js" defer></script>
 </header>

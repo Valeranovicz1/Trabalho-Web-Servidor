@@ -9,7 +9,7 @@
         exit;
     }
 
-    include '../partials/header.php';
+    include_once __DIR__ . '/../partials/header.php'; 
 ?>
 
 
@@ -30,4 +30,4 @@
         </div>
     </main>
     
-    <?php include '../partials/footer.php'; ?>
+    <?php include_once __DIR__ . '/../partials/footer.php'; ?>

@@ -12,6 +12,10 @@
         $registerController->register();
     }
     
+    if(!defined('BASE_URL')){
+    define('BASE_URL','/Trabalho-Web-Servidor');
+}
+
 ?>
 
 <!DOCTYPE html>
@@ -20,7 +24,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Registro - ET Games</title>
-    <link rel="icon" href="../../assets/img/logo/logo.png" type="image/png">
+    <link rel="icon" href="<?= BASE_URL ?>/assets/img/logo/logo.png" type="image/png">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-SgOJa3DmI69IUzQ2PVdRZhwQ+dy64/BUtbMJw1MZ8t5HZApcHrRKUc4W0kG879m7" crossorigin="anonymous">
     <style>
         body {
@@ -84,11 +88,11 @@
 </head>
 <body>
     <div class="registro-container">
-        <a href="../login/Login.php" class="back-icon">
-            <img src="../../assets/img/outros/icovoltar.webp" alt="Voltar">
+        <a href="/" class="back-icon">
+            <img src="<?= BASE_URL ?>/assets/img/outros/icovoltar.webp" alt="Voltar">
         </a>
         <div class="logo">
-            <img src="../../assets/img/logo/logo.png" alt="ET Games Logo">
+            <img src="<?= BASE_URL ?>/assets/img/logo/logo.png" alt="ET Games Logo">
             <h1 class="text-success">ET Games</h1>
         </div>
 
@@ -98,7 +102,7 @@
             <p style="color: red;"><?php echo htmlspecialchars($erro); ?></p>
         <?php endif; ?>
 
-        <form method="POST" action="">
+       <form method="POST" action="/registro">
             <div class="form-group">
                 <input type="text" id="nome" name="nome" placeholder="Nome">
             </div>
@@ -114,7 +118,7 @@
             <div class="form-group">
                 <input type="date" id="data_nascimento" name="data_nascimento">
             </div>
-            <button type="submit" class="btn btn-success">Registrar</button>
+           <button type="submit" class="btn btn-success">Registrar</button>
         </form>
 
         

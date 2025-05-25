@@ -30,10 +30,10 @@
         
 
         if ($resultado === true) {
-            header('Location: ../../view/login/Login.php');
+            header('Location: /');
             exit;
         } else {
-            header('Location: ../../view/login/Registro.php?');
+            header('Location: /Trabalho-Web-Servidor/registro');
             exit;
         }
     }
