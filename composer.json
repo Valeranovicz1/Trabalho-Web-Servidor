@@ -1,0 +1,13 @@
+{
+    "name": "eduar/trabalho-web-servidor",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "idkAndrad3",
+            "email": "eduardomassuandrade@gmail.com"
+        }
+    ],
+    "require": {
+        "pecee/simple-router": "^5.4"
+    }
+}
