@@ -56,8 +56,8 @@ Entre no site:
 <pre> https://getcomposer.org/download/</pre>
 Selecione a opção de download desejada
 Execute o instalador do composer
-Configure o composer e o selecione o executável php dentro da pasta xampp\php
-Finalize o processo
+Configure o composer e o selecione o executável php dentro da pasta xampp\php e finalize o processo
+
 
 ## Configurando o Composer no VSCode
 Dentro do VSCode abra a pasta do arquivo do projeto localizada em:
