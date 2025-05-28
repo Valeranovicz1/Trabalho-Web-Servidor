@@ -66,10 +66,10 @@ Agora dentro do terminal execute os seguintes comandos:
 <pre> composer init </pre>
 Configure o seu composer.
 <pre>composer install
-  composer dump-autoload
-  composer require pecee/simple-router
-  composer dump-autoload
-  php -S localhost:8000</pre>
+composer dump-autoload
+composer require pecee/simple-router
+composer dump-autoload
+php -S localhost:8000</pre>
 
 Acesse no navegador:
 http://localhost:8000/
