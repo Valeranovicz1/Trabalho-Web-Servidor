@@ -28,6 +28,8 @@ Além disso, o sistema possui um painel administrativo, onde o administrador tem
   - Git instalado;
   - MySQL ou MariaDB;
   - Servidor Web (Apache ou similar);
+  - VSCode (Ou outro editor);
+  - Composer;
   - Navegador moderno.
 
 ## Copie o repositório
@@ -38,8 +40,39 @@ cd Trabalho-Web-Servidor.git </pre>
 Se estiver usando XAMPP:
 Inicie o Apache e o MySQL;
 
+## Configurando o Apache
+Clique no botão config e selecione o Apache(httpd.conf)
+Tire o # da linha LoadModule rewrite_module modules/mod_rewrite.so
+Procure por AllowOverride e modifique para AllowOverride All
+
+## Configurando o Banco de Dados
+Acesse o site:
+<pre>http://localhost/phpmyadmin/index.php</pre>
+Crie um novo banco de dados chamado et_gamas
+Clique na aba importar e selecione o arquivo BancoDadosSQL e execute
+
+## Instalando o Composer
+Entre no site:
+<pre> https://getcomposer.org/download/</pre>
+Selecione a opção de download desejada
+Execute o instalador do composer
+Configure o composer e o selecione o executável php dentro da pasta xampp\php
+Finalize o processo
+
+## Configurando o Composer no VSCode
+Dentro do VSCode abra a pasta do arquivo do projeto localizada em:
+<pre>C:\xampp\htdocs\Trabalho-Web-Servidor</pre>
+Agora dentro do terminal execute os seguintes comandos:
+<pre> composer init </pre>
+Configure o seu composer.
+<pre>composer install
+     composer dump-autoload
+     composer require pecee/simple-router
+     composer dump-autoload
+     php -S localhost:8000</pre>
+
 Acesse no navegador:
-http://localhost/TrabalhoWebServidor/index.php
+http://localhost:8000/
   
 
 
