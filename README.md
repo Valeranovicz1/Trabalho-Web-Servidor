@@ -12,7 +12,7 @@ O projeto consiste em um aplicativo web com foco na aquisição de jogos digitai
 ## ✅ Funcionalidades
 Os usuários podem se cadastrar, realizar login e acessar diversas funcionalidades, como:
 
-  - Adicionar jogos à sua biblioteca pessoal;
+  - Adicionar jogos à sua biblioteca pessoal (faltante);
   - Enviar mensagens para o suporte da plataforma;
   - Visualizar e editar as informações da própria conta;
   - Acessar detalhes completos sobre os jogos disponíveis.
@@ -22,7 +22,6 @@ Além disso, o sistema possui um painel administrativo, onde o administrador tem
   - Criar novos jogos no catálogo;
   - Listar os jogos já existentes;
   - Remover jogos da plataforma.
-  - Editar jogos da plataforma(Funcionalidade faltante);
 
 # ⚙️ Instalação e Configuração
   - PHP 8.0 ou superior;
@@ -48,5 +47,5 @@ http://localhost/TrabalhoWebServidor/index.php
 - Model: Contém as classes responsáveis pela representação dos dados e regras de negócio da aplicação. 
 - controllers: Contém os arquivos responsáveis pela lógica da aplicação.
 - view: Inclui os arquivos de interface do usuário (HTML e PHP).
-- storage: Contém os arquivos de armazenamento de dados.
+- storage: Contém as imagens dos jogos.
 - assets: Contém os recursos estáticos da aplicação (CSS,JS e Imagens).
