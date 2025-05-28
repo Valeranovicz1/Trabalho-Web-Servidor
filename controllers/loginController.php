@@ -1,11 +1,11 @@
 <?php
 
+    require_once __DIR__ . '/../Model/Conexao.php'; 
+    require_once __DIR__ . '/../Model/Usuario.php';
+
     if (session_status() === PHP_SESSION_NONE) {
         session_start();
     }
-
-    require_once __DIR__ . '/../Model/Conexao.php';
-    require_once __DIR__ . '/../Model/Usuario.php';
     
     class LoginController{
 
@@ -17,15 +17,6 @@
     }
 
         public function login() {
-        
-        if (isset($_SESSION['usuario'])) {
-            if ($_SESSION['usuario']['tipo'] === 'empresa') {
-                header('Location: ../painel/painelEmpresa.php');
-            } else {
-                header('Location: ../painel/painelCliente.php');
-            }
-            exit;
-        }   
 
         $nickname = trim($_POST['nickname'] ?? '');
         $senha = $_POST['senha'] ?? ''; 
@@ -54,7 +45,7 @@
             if ($usuario['tipo_usuario'] === 'empresa') {
                 header('Location: ../painel/painelEmpresa.php');
             } elseif ($usuario['tipo_usuario'] === 'cliente') {
-                header('Location: ../painel/painelCliente.php');
+                header('Location: /loja');
             } else {
                 session_destroy(); 
                 header('Location: ../../view/login/Login.php?erro=tipo_desconhecido');

@@ -38,9 +38,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>ET Games - Empresa</title>
 
-  <link rel="stylesheet" href="<?= BASE_URL ?>/assets/css/style-painel.css">
-  <script src="<?= BASE_URL ?>/assets/js/scriptLoja.js" defer></script>
-  <link rel="icon" href="<?= BASE_URL ?>/assets/img/logo/logo.png" type="image/png">
+  <link rel="stylesheet" href="/assets/css/style-painel.css">
+  <script src="/assets/js/scriptLoja.js" defer></script>
+  <link rel="icon" href="/assets/img/logo/logo.png" type="image/png">
 </head>
 <body>
   <?php include_once __DIR__ . '/../partials/headerEmpresa.php'; ?>
@@ -55,7 +55,7 @@
     <?php endif; ?>
 
         <h2 class="text-white">Cadastrar Novo Jogo</h2>
-        <form method="POST" action="<?= BASE_URL ?>/painel/painelEmpresa.php" enctype="multipart/form-data">
+        <form method="POST" action="/painel/painelEmpresa" enctype="multipart/form-data">
 
             <label class="text-success form-label" for="nome">Nome do Jogo:</label>
             <input class="form-control" type="text" id="nome" name="nome" required>
@@ -79,7 +79,7 @@
         </form>
 
         <h2 class="text-white">Excluir Jogo</h2>
-         <form method="POST" action="<?= BASE_URL ?>/painel/painelEmpresa.php">
+         <form method="POST" action="/painel/painelEmpresa">
             
         <label class="text-success form-label" for="nome_excluir">Selecione o jogo para excluir:</label>
             <select class="form-select" id="nome_excluir" name="nome_excluir" required>
@@ -96,7 +96,7 @@
         </form>
 
        <h2 class="text-white">Listar Jogos</h2>
-<form method="POST" action="painelEmpresa.php"> 
+<form method="POST" action="painelEmpresa"> 
     <button type="submit" name="listar_empresa" class="btn btn-info">
         Clique aqui para listar os jogos
     </button>

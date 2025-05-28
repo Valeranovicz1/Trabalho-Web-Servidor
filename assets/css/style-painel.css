@@ -125,7 +125,7 @@ footer {
     transform: translateX(-50px); /* Move um pouco para a esquerda */
 }
 /* Estilo do container do carrossel */
-.carousel-container {
+.teste-container {
     position: relative;
     max-width: 80%; /* Aumente a largura máxima */
     margin: 20px auto;
@@ -136,40 +136,46 @@ footer {
 }
 
 /* Estilo do carrossel */
-.carousel {
+.teste {
     display: flex;
     gap: 10%; /* Ajuste o espaçamento entre os itens */
     transition: transform 0.5s ease-in-out;
 }
 
-.carousel-item {
-    min-width: 20%; /* Ajuste para exibir mais itens ou aumentar o tamanho */
+.teste-item {
+    min-width: 20%;
+    max-width: 250px; /* Isso limita a largura do contêiner da imagem */
     text-align: center;
     padding: 10px;
     box-sizing: border-box;
     transition: transform 0.3s ease-in-out;
+    border: 1px solid blue; 
 }
 
-.carousel-item img {
-    width: 300px; /* Aumente a largura das imagens */
-    height: 230px; /* Aumente a altura das imagens */
-    object-fit: cover;
-    border-radius: 8px;
-    margin-bottom: 10px;
+.teste-item img {
+    max-width: 100%;  /* A imagem não será mais larga que o .teste-item */
+    height: auto;     /* A altura será ajustada para manter a proporção original da imagem */
+    object-fit: contain; /* Garante que toda a imagem seja visível dentro das dimensões acima */
+    border: 1px solid red; /* Mantenha para depuração */
+    display: block;        /* Ajuda com o comportamento de block-level para dimensões */
+    margin-left: auto;     /* Para centralizar a imagem se ela for mais estreita que 100% (com object-fit:contain) */
+    margin-right: auto;    /* Para centralizar a imagem */
 }
 
-.carousel-item p {
+.teste-item p {
     margin: 5px 0;
     color: #c7d5e0;
     padding-left: 50px; /* Move o texto um pouco para a direita */
 }
 
-.carousel-item:hover {
+.teste-item:hover {
     transform: scale(1.1); /* Aumenta o tamanho em 10% */
     z-index: 5; /* Garante que o item fique acima dos outros */
 }
 
-.carousel-btn {
+
+
+.carousel-btn { 
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
@@ -469,4 +475,109 @@ footer {
 
 .empresa-painel-container form {
     margin-bottom: 30px;
+}
+
+.game-filter-section {
+        margin-top: 20px;
+        padding: 15px;
+        background-color: #1e1e1e;
+        border-radius: 8px;
+        text-align: center;
+        margin-bottom: 20px;
+    }
+
+    .game-filter-section label {
+        color: #00ff00;
+        margin-right: 10px;
+    }
+
+    .game-filter-section select {
+        padding: 8px;
+        border: 1px solid #333;
+        border-radius: 4px;
+        background-color: #2a2a2a;
+        color: #c7d5e0;
+    }
+
+    .game-filter-section input[type="submit"] {
+        padding: 8px 15px;
+        border: none;
+        border-radius: 4px;
+        background-color: #00ff00;
+        color: #121212;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+    }
+
+    .game-filter-section input[type="submit"]:hover {
+        background-color: #00cc00;
+    }
+
+    .game-grid-section {
+        padding: 20px;
+        background-color: #1e1e1e;
+        border-radius: 8px;
+    }
+
+    .game-grid-section h2 {
+        color: #00ff00;
+        margin-bottom: 15px;
+        text-align: center;
+    }
+
+.game-grid-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); 
+    gap: 20px; 
+}
+
+.game-item {
+    background-color: #2a2a2a;
+    border-radius: 8px;     
+    overflow: hidden;        
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5); 
+    cursor: pointer;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    display: flex;           
+    flex-direction: column;
+    text-decoration: none;   
+}
+
+.game-item:hover {
+    transform: translateY(-5px) scale(1.03);
+    box-shadow: 0 6px 16px rgba(0, 180, 0, 0.4);
+}
+
+.game-image-wrapper {
+    width: 100%;           
+    padding-top: 100%;
+    position: relative;      
+    background-color: #333; 
+}
+
+.game-image-wrapper img {
+    position: absolute; 
+    top: 0;
+    left: 0;
+    width: 100%; 
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+
+.game-title p {
+    margin: 0 0 4px 0;
+    font-size: 0.95em;  
+    font-weight: bold;
+    color: #e0e0e0;
+    white-space: nowrap;  
+    overflow: hidden;       
+    text-overflow: ellipsis; /
+}
+
+.game-category p {
+    margin: 0;
+    font-size: 0.8em;
+    color: #aaa;
 }

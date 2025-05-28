@@ -4,7 +4,7 @@
 
         private $dataNascimento;
 
-        public function __construct(PDO $conexaoDb) { 
+        public function __construct($conexaoDb) { 
 
             $this->conexao = $conexaoDb;
             $this->tipoUsuario = 'cliente';
@@ -69,12 +69,61 @@
                     $this->conexao->rollBack();
                 }
 
-                error_log("ERRO CAPTURADO em Cliente::registrarCliente(): " . $e->getMessage() . "\nTRACE:\n" . $e->getTraceAsString());
-                return false; // << --- MUDE AQUI
+                error_log("Exeção ao cadastrar cliente");
+                return false; 
                 }
         }
 
-    }
+        public function editarPerfil(){
 
+            if (empty($this->nome) || empty($this->email) ||  empty($this->nickname) || empty($this->dataNascimento)) {
+                return false;
+            }
+
+            try {
+
+
+            $this->conexao->beginTransaction();
+
+            $sqlUsuario = "UPDATE usuarios SET nome = :nome, email = :email, nickname = :nickname WHERE id = :id";
+
+            $stUsuario = $this->conexao->prepare($sqlUsuario);
+
+            $stUsuario->bindParam(':nome', $this->nome);
+            $stUsuario->bindParam(':email', $this->email);
+            $stUsuario->bindParam(':nickname', $this->nickname);
+            $stUsuario->bindParam(':id', $this->id);
+
+            if (!$stUsuario->execute()) {
+                $this->conexao->rollBack();
+                error_log("Erro ao atualizar usuario.");
+                return false;
+            }
+
+            $sqlCliente = "UPDATE clientes SET data_nascimento = :dataNascimento WHERE id_usuario = :id_usuario";
+
+            $stCliente = $this->conexao->prepare($sqlCliente);
+            $stCliente->bindParam(':id_usuario', $this->id);
+            $stCliente->bindParam(':dataNascimento', $this->dataNascimento);
+
+            if (!$stCliente->execute()) {
+                error_log("Erro ao atualizar cliente.");
+                $this->conexao->rollBack();
+                return false;
+            }
+
+            $this->conexao->commit();
+            return true;
+
+            } catch (Exception $e) {
+                
+                if ($this->conexao && $this->conexao->inTransaction()) {
+                    $this->conexao->rollBack();
+                }
+                error_log("Exeção ao editar perfil");
+                return false;
+                }
+            }
+        }
 
 ?>

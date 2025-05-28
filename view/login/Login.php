@@ -1,14 +1,24 @@
 <?php
 
-if (session_status() === PHP_SESSION_NONE) {
-    session_start();
-}
+    if (session_status() === PHP_SESSION_NONE) {
+        session_start();
+    }
 
-require_once __DIR__ . '/../../controllers/LoginController.php';
+    require_once __DIR__ . '/../../controllers/LoginController.php';
 
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $loginController = new LoginController();
-    $loginController->login();
+    if (isset($_SESSION['usuario'])) {
+            
+                if ($_SESSION['usuario']['tipo'] === 'empresa') {
+                    header('Location: ../painel/painelEmpresa.php');
+                } else {
+                    header('Location: ../painel/painelCliente.php');
+                }
+                exit;
+        }
+
+    if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+        $loginController = new LoginController();
+        $loginController->login();
 }
 
 ?>
@@ -20,7 +30,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login - ET Games</title>
-    <link rel="icon" href="/Trabalho WebServidor/assets/img/logo/logo.png" type="image/png">
+    <link rel="icon" href="/assets/img/logo/logo.png" type="image/png">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-SgOJa3DmI69IUzQ2PVdRZhwQ+dy64/BUtbMJw1MZ8t5HZApcHrRKUc4W0kG879m7" crossorigin="anonymous">
     <style>
         body {
@@ -78,7 +88,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <body>
     <div class="login-container">
         <div class="logo">
-            <img src="/Trabalho WebServidor/assets/img/logo/logo.png" alt="ET Games Logo">
+            <img src="/assets/img/logo/logo.png" alt="ET Games Logo">
             <h1 class="text-success">ET Games</h1>
         </div>
         <h2 class="text-light">Login</h2>
@@ -91,10 +101,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 <input type="password" id="senha" name="senha" placeholder="Senha" required>
             </div>
             <button type="submit" class="btn btn-success">Login</button>
-            <button type="button" class="btn btn-success"
-        onclick="window.location.href='registro'">
-    Registro
-</button>
+            <button type="button" class="btn btn-success" onclick="window.location.href='registro'">Registro</button>
         </form>
     </div>
 </body>

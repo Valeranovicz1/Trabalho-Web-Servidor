@@ -1,27 +1,20 @@
 <?php
 
-if (session_status() === PHP_SESSION_NONE) {
-    session_start();
-}
+    if (session_status() === PHP_SESSION_NONE) {
+        session_start();
+    }
 
+    require_once __DIR__ . '/../../controllers/clienteController.php';
 
-$tipo = $_SESSION['usuario']['tipo'] ?? '';
-$nome = $_SESSION['usuario']['nome'] ?? 'Não definido';
-$email = $_SESSION['usuario']['email'] ?? 'Não definido';
-$nickname = $_SESSION['usuario']['nickname'] ?? 'Não definido';
-$data_nascimento = $_SESSION['usuario']['data_nascimento'] ?? 'Não definido';
+    $controller = new ClienteController(); 
+    $controller->editarPerfil();
 
-$mensagem_sucesso = $_SESSION['mensagem_sucesso'] ?? null;
-$mensagem_erro = $_SESSION['mensagem_erro'] ?? null;
-
-unset($_SESSION['mensagem_sucesso'], $_SESSION['mensagem_erro']);
-
-if ($tipo === 'cliente') {
-    $backUrl =  '/loja';
-} 
+    $nome = $_SESSION['usuario']['nome'] ?? 'Não definido';
+    $email = $_SESSION['usuario']['email'] ?? 'Não definido';
+    $nickname = $_SESSION['usuario']['nickname'] ?? 'Não definido';
+    $data_nascimento = $_SESSION['usuario']['data_nascimento'] ?? 'Não definido';
 
 ?>
-
 
 <!DOCTYPE html>
 <html lang="en">
@@ -30,7 +23,7 @@ if ($tipo === 'cliente') {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Minha Conta - ET Games</title>
-    <link rel="icon" href="/assets/img/logo/logo.png" type="image/png">
+    <link rel="icon" href="../../assets/img/logo/logo.png" type="image/png">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-SgOJa3DmI69IUzQ2PVdRZhwQ+dy64/BUtbMJw1MZ8t5HZApcHrRKUc4W0kG879m7" crossorigin="anonymous">
     <style>
         body {
@@ -106,47 +99,35 @@ if ($tipo === 'cliente') {
 <body>
     
     <div class="container">
-        <a href="<?= $backUrl ?>" class="back-icon">
+    <a href="/minha-conta" class="back-icon">
             <img src="/assets/img/outros/icovoltar.webp" alt="Voltar">
         </a>
         <img src="/assets/img/logo/logo.png" alt="Logo" class="logo">
         <img src="/assets/img/outros/myaccount.png" alt="Foto de Perfil" class="profile-pic">
-
         <h1 class="text-white">Minha Conta</h1>
-        
-        <?php if ($mensagem_sucesso): ?>
-            <div class="alert alert-success" role="alert">
-                <?php echo htmlspecialchars($mensagem_sucesso); ?>
+         <form action="/editar-conta" method="POST">
+            <div class="info">
+                <label class="text-success" for="nickname">Nickname:</label>
+                <input class="form-control mt-1" type="text" id="nickname" name="nickname" value="<?php echo htmlspecialchars($nickname); ?>">
             </div>
-        <?php endif; ?>
-        
-        <?php if ($mensagem_erro): ?>
-            <div class="alert alert-danger" role="alert">
-                <?php echo htmlspecialchars($mensagem_erro); ?>
+            <div class="info">
+                <label class="text-success" for="email">Email:</label>
+                <input class="form-control mt-1" type="email" id="email" name="email" value="<?php echo htmlspecialchars($email); ?>">
             </div>
-        <?php endif; ?>
-        <div class="info">
-            <label class="text-success">Nickname:</label>
-            <span><?php echo htmlspecialchars($nickname); ?></span>
-        </div>
-        <div class="info">
-            <label class="text-success">Email:</label>
-            <span><?php echo htmlspecialchars($email); ?></span>
-        </div>
-        <div class="info">
-            <label class="text-success">Nome:</label>
-            <span><?php echo htmlspecialchars($nome); ?></span>
-        </div>
-        <div class="info">
-            <label class="text-success">Data de Nascimento:</label>
-            <span><?php echo htmlspecialchars($data_nascimento); ?></span>
-        </div>
+            <div class="info">
+                <label class="text-success" for="nome">Nome:</label>
+                <input class="form-control mt-1" type="text" id="nome" name="nome" value="<?php echo htmlspecialchars($nome); ?>">
+            </div>
+            <div class="info">
+                <label class="text-success" for="dataNascimento">Data de Nascimento:</label>
+                <input class="form-control mt-1" type="date" id="dataNascimento" name="dataNascimento" value="<?php echo htmlspecialchars($data_nascimento); ?>">
+            </div>
 
-        <form action="/editar-conta" method="GET">
-            <button type="submit" class="btn btn-success">Editar Perfil</button>
+            <button type="submit" name="editar" class="btn btn-success mt-3">Salvar Alterações</button>
         </form>
-    </div>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/js/bootstrap.min.js" …></script>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/js/bootstrap.min.js" integrity="sha384-VQqxDN0EQCkWoxt/0vsQvZswzTHUVOImccYmSyhJTp7kGtPed0Qcx8rK9h9YEgx+" crossorigin="anonymous"></script>
 </body>
+
 </html>

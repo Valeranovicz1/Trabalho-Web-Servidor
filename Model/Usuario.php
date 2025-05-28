@@ -20,7 +20,7 @@
             $this->$propriedade = $valor;
         }
         
-        public static function logar(PDO $conexaoDb, string $nickname, string $senha): array {
+        public static function logar($conexaoDb, string $nickname, string $senha): array {
 
             try {
                 
@@ -47,7 +47,7 @@
 
                     return ['success' => false, 'error' => 'usuario_nao_encontrado'];
                 }
-            } catch (PDOException $e) {
+            } catch (Exception $e) {
                 error_log("Erro de autenticação no Usuario::autenticar() (modo inseguro): " . $e->getMessage());
                 return ['success' => false, 'error' => 'erro_sistema'];
             }

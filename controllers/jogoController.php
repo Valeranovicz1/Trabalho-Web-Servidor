@@ -1,11 +1,12 @@
 <?php
 
-if (session_status() === PHP_SESSION_NONE) {
-    session_start();
-}
+    require_once __DIR__ . '/../Model/Conexao.php'; 
+    require_once __DIR__ . '/../Model/Jogo.php';
 
-require_once __DIR__ . '/../Model/Conexao.php'; 
-require_once __DIR__ . '/../Model/Jogo.php';
+    if (session_status() === PHP_SESSION_NONE) {
+        session_start();
+    }
+
 
 class JogoController {
 
@@ -107,7 +108,6 @@ class JogoController {
 
         if ($jogo->preco === false || $jogo->preco < 0) {
             $_SESSION['mensagem_erro_jogo'] = "Preço inválido fornecido.";
-            header('Location: painelEmpresa.php');
             header('Location: painelEmpresa.php?erro=preco_invalido'); 
             exit;
         }
@@ -164,11 +164,10 @@ class JogoController {
     
     public function listaJogosCategoria($categoria){
 
-            $jogo = new Jogo($this->db);
-            return $jogo->listarJogosCategoria($categoria);
+        $jogo = new Jogo($this->db);
+        return $jogo->listarJogosCategoria($categoria);
 
     }
-
 
 }
 ?>
