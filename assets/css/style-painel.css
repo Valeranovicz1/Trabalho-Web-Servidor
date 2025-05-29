@@ -1,0 +1,583 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #121212;
+    color: #333;
+}
+
+
+
+header h1 {
+    margin: 0;
+    font-size: 2.5em;
+}
+
+nav {
+    display: flex; /* Torna o contêiner flexível */
+    justify-content: center; /* Centraliza os itens horizontalmente */
+    align-items: center; /* Alinha os itens verticalmente */
+    padding: 0.5rem 0;
+    gap: 1rem; /* Espaçamento entre os links */
+}
+
+nav a {
+    margin: 0 1rem;
+    font-weight: bold;
+    font-size: 30px;
+    transition: transform 0.3s ease, color 0.3s ease;
+}
+
+main {
+    padding: 20px;
+    max-width: none;
+    margin: 0 auto;
+    width: 100%;
+}
+
+section {
+    margin-bottom: 20px;
+}
+
+/* Estilo para o cabeçalho */
+section h2 {
+    color: #ffffff;
+    border-bottom: 2px solid #ddd;
+    padding-bottom: 5px;
+}
+
+footer {
+    text-align: center;
+    padding: 10px 0;
+    color: #fff;
+    margin-top: 20px;
+}
+
+/* Estilos específicos para a página de suporte */
+.suporte-container {
+    max-width: 800px;
+    margin: 50px auto;
+    background: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.suporte-container h1 {
+    text-align: center;
+    color: #333;
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 5px;
+    color: #555;
+}
+
+.form-group input, .form-group textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.form-group textarea {
+    resize: vertical;
+    height: 100px;
+}
+
+.btn-submit {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    background-color: #007BFF;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.btn-submit:hover {
+    background-color: #0056b3;
+}
+/* Estilo para o container da logo */
+.logo-container {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 10px 20px;
+}
+
+.logo {
+    width: 100px; /* Ajuste o tamanho da logo conforme necessário */
+    height: auto;
+}
+.logo-text {
+    width: 260px; /* Define a largura da imagem para 200px */
+    height: auto; /* Mantém a proporção da altura */
+    margin: 0 auto;
+    display: block;
+    transform: translateX(-50px); /* Move um pouco para a esquerda */
+}
+/* Estilo do container do carrossel */
+.teste-container {
+    position: relative;
+    max-width: 80%; /* Aumente a largura máxima */
+    margin: 20px auto;
+    overflow: hidden;
+    background-color: #1e1e1e;
+    border-radius: 8px;
+    padding: 20px; /* Aumente o padding para mais espaço interno */
+}
+
+/* Estilo do carrossel */
+.teste {
+    display: flex;
+    gap: 10%; /* Ajuste o espaçamento entre os itens */
+    transition: transform 0.5s ease-in-out;
+}
+
+.teste-item {
+    min-width: 20%;
+    max-width: 250px; /* Isso limita a largura do contêiner da imagem */
+    text-align: center;
+    padding: 10px;
+    box-sizing: border-box;
+    transition: transform 0.3s ease-in-out;
+    border: 1px solid blue; 
+}
+
+.teste-item img {
+    max-width: 100%;  /* A imagem não será mais larga que o .teste-item */
+    height: auto;     /* A altura será ajustada para manter a proporção original da imagem */
+    object-fit: contain; /* Garante que toda a imagem seja visível dentro das dimensões acima */
+    border: 1px solid red; /* Mantenha para depuração */
+    display: block;        /* Ajuda com o comportamento de block-level para dimensões */
+    margin-left: auto;     /* Para centralizar a imagem se ela for mais estreita que 100% (com object-fit:contain) */
+    margin-right: auto;    /* Para centralizar a imagem */
+}
+
+.teste-item p {
+    margin: 5px 0;
+    color: #c7d5e0;
+    padding-left: 50px; /* Move o texto um pouco para a direita */
+}
+
+.teste-item:hover {
+    transform: scale(1.1); /* Aumenta o tamanho em 10% */
+    z-index: 5; /* Garante que o item fique acima dos outros */
+}
+
+
+
+.carousel-btn { 
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: #171a21;
+    color: #c7d5e0;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    font-size: 18px;
+    border-radius: 4px;
+    z-index: 10;
+}
+
+.carousel-btn:hover {
+    background-color: #66c0f4;
+}
+
+.prev-btn {
+    left: 10px;
+}
+
+.next-btn {
+    right: 10px;
+}
+/* Estilo do modal */
+.modal {
+    display: none; /* Oculta o modal por padrão */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8); /* Fundo escuro com transparência */
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.modal-content {
+    background-color: #1e1e1e;
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+    color: #ffffff;
+    width: 80%;
+    max-width: 400px;
+    position: relative;
+}
+
+.modal-content img {
+    width: 200px; /* Redimensiona a imagem */
+    height: 200px; /* Redimensiona a imagem */
+    object-fit: cover;
+    border-radius: 8px;
+    margin-bottom: 15px;
+}
+
+.modal-content h2 {
+    font-size: 24px;
+    margin-bottom: 10px;
+    color: #00ff00;
+}
+
+.modal-content p {
+    font-size: 16px;
+    margin-bottom: 10px;
+    color: #c7d5e0;
+}
+
+.add-to-cart-button {
+    background-color: #198754;
+    color: #121212;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    margin-top: 15px;
+}
+
+.add-to-cart-button:hover {
+    background-color: #028202;
+}
+
+.close {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    font-size: 24px;
+    font-weight: bold;
+    color: #ffffff;
+    cursor: pointer;
+}
+
+
+
+/* Estilo para o menu da conta */
+
+.account-menu {
+    position: absolute;
+    top: 30px;
+    right: 50px; /* Altera para o canto superior direito */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.account-icon {
+    width: 60px;
+    height: 60px;
+    cursor: pointer;
+    border-radius: 50%;
+    transition: transform 0.2s ease-in-out;
+}
+
+.account-icon:hover {
+    transform: scale(1.1);
+}
+
+.account-dropdown {
+    display: none;
+    position: absolute;
+    top: 50px;
+    right: 0; /* Altere "left" para "right" para posicionar à esquerda */
+    background-color: #1e1e1e;
+    border: 1px solid #198754;
+    border-radius: 5px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+    z-index: 1000;
+    width: 150px;
+    text-align: center;
+}
+
+.account-dropdown a {
+    display: block;
+    padding: 10px;
+    color: #ffffff;
+    text-decoration: none;
+    font-size: 14px;
+    border-bottom: 1px solid #198754;
+}
+
+.account-dropdown a:last-child {
+    border-bottom: none;
+}
+
+.account-dropdown a:hover {
+    background-color: #00ff00;
+    color: #121212;
+}
+
+.suporte-container {
+    max-width: 800px;
+    margin: 50px auto;
+    background: #2a2a2a; /* Fundo escuro */
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.8);
+}
+
+.suporte-container h1 {
+    text-align: center;
+    color: #00ff00; /* Verde neon para destaque */
+    margin-bottom: 20px;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 8px;
+    color: #c7d5e0; /* Cinza claro */
+}
+
+.form-group input, .form-group textarea {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #444;
+    border-radius: 5px;
+    background-color: #1e1e1e; /* Fundo dos inputs */
+    color: #ffffff; /* Texto claro */
+}
+
+.form-group input::placeholder,
+.form-group textarea::placeholder {
+    color: #888; /* Placeholder mais suave */
+}
+
+.form-group textarea {
+    resize: vertical;
+    height: 120px;
+}
+
+.btn-submit {
+    display: block;
+    width: 100%;
+    padding: 12px;
+    background-color: #00ff00; /* Botão verde neon */
+    color: #121212; /* Texto escuro para contraste */
+    border: none;
+    border-radius: 5px;
+    font-size: 18px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.btn-submit:hover {
+    background-color: #028202; /* Verde mais forte no hover */
+}
+
+/* Estilos específicos para a página Sobre - Dark Theme */
+.sobre-container {
+    max-width: 1000px;
+    margin: 50px auto;
+    padding: 30px;
+    background-color: #1e1e1e;
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.8);
+}
+
+.sobre-container section {
+    margin-bottom: 40px;
+}
+
+.sobre-container h2 {
+    font-size: 28px;
+    color: rgb(25 135 84);
+    margin-bottom: 15px;
+    border-bottom: 2px solid rgb(25 135 84);
+    padding-bottom: 5px;
+}
+
+.sobre-container p, .sobre-container ul {
+    font-size: 18px;
+    color: #c7d5e0;
+    line-height: 1.6;
+}
+
+.sobre-container ul {
+    list-style-type: disc;
+    padding-left: 20px;
+}
+
+.sobre-container ul li {
+    margin-bottom: 10px;
+}
+
+.empresa-painel-container {
+    max-width: 900px;
+    margin: 40px auto;
+    padding: 30px;
+    background-color: #21272e;
+    color: #c7d5e0;
+    border-radius: 10px;
+    box-shadow: 0 0 15px rgba(0, 255, 0, 0.15);
+}
+
+.empresa-logo {
+    width: 120px;
+    display: block;
+    margin: 0 auto 20px;
+}
+
+.empresa-painel-container h1,
+.empresa-painel-container h2,
+.empresa-painel-container h3,
+.empresa-painel-container label {
+    color: #00ff00;
+}
+
+.empresa-painel-container input,
+.empresa-painel-container button {
+    width: 100%;
+    padding: 10px;
+    margin: 6px 0 12px;
+    border-radius: 5px;
+    border: 1px solid #00ff00;
+    background-color: #1e1e1e;
+    color: #c7d5e0;
+    font-size: 16px;
+}
+
+.empresa-painel-container button {
+    background-color: #00ff00;
+    color: #121212;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.empresa-painel-container button:hover {
+    background-color: #028202;
+}
+
+.empresa-painel-container form {
+    margin-bottom: 30px;
+}
+
+.game-filter-section {
+        margin-top: 20px;
+        padding: 15px;
+        background-color: #1e1e1e;
+        border-radius: 8px;
+        text-align: center;
+        margin-bottom: 20px;
+    }
+
+    .game-filter-section label {
+        color: #00ff00;
+        margin-right: 10px;
+    }
+
+    .game-filter-section select {
+        padding: 8px;
+        border: 1px solid #333;
+        border-radius: 4px;
+        background-color: #2a2a2a;
+        color: #c7d5e0;
+    }
+
+    .game-filter-section input[type="submit"] {
+        padding: 8px 15px;
+        border: none;
+        border-radius: 4px;
+        background-color: #00ff00;
+        color: #121212;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+    }
+
+    .game-filter-section input[type="submit"]:hover {
+        background-color: #00cc00;
+    }
+
+    .game-grid-section {
+        padding: 20px;
+        background-color: #1e1e1e;
+        border-radius: 8px;
+    }
+
+    .game-grid-section h2 {
+        color: #00ff00;
+        margin-bottom: 15px;
+        text-align: center;
+    }
+
+.game-grid-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); 
+    gap: 20px; 
+}
+
+.game-item {
+    background-color: #2a2a2a;
+    border-radius: 8px;     
+    overflow: hidden;        
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5); 
+    cursor: pointer;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    display: flex;           
+    flex-direction: column;
+    text-decoration: none;   
+}
+
+.game-item:hover {
+    transform: translateY(-5px) scale(1.03);
+    box-shadow: 0 6px 16px rgba(0, 180, 0, 0.4);
+}
+
+.game-image-wrapper {
+    width: 100%;           
+    padding-top: 100%;
+    position: relative;      
+    background-color: #333; 
+}
+
+.game-image-wrapper img {
+    position: absolute; 
+    top: 0;
+    left: 0;
+    width: 100%; 
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+
+.game-title p {
+    margin: 0 0 4px 0;
+    font-size: 0.95em;  
+    font-weight: bold;
+    color: #e0e0e0;
+    white-space: nowrap;  
+    overflow: hidden;       
+    text-overflow: ellipsis; /
+}
+
+.game-category p {
+    margin: 0;
+    font-size: 0.8em;
+    color: #aaa;
+}
