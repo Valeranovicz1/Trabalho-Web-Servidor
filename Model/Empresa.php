@@ -1,9 +1,9 @@
 <?php
 
-    class Empresa extends Usuario{
+namespace App\Model;
 
-        private $site;
+class Empresa extends Usuario
+{
 
-    }
-
-?>
+    private $site;
+}

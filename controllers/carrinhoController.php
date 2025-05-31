@@ -1,29 +1,33 @@
 <?php
 
-    require_once __DIR__ . '/../Model/Conexao.php';
-    require_once __DIR__ . '/../Model/Jogo.php';
-    require_once __DIR__ . '/../Model/Biblioteca.php';
+namespace App\Controllers;
+
+use App\Model\Conexao;
+use App\Model\Biblioteca;
 
 
-    class CarrinhoController {
-        
+class CarrinhoController
+{
+
     private $db;
-    
-    public function __construct() {
-    
-        $this->db = Conexao::get(); 
+
+    public function __construct()
+    {
+
+        $this->db = Conexao::get();
 
         if (session_status() === PHP_SESSION_NONE) {
             session_start();
         }
 
         if (!isset($_SESSION['carrinho'])) {
-            $_SESSION['carrinho'] = []; 
+            $_SESSION['carrinho'] = [];
         }
     }
-    
-    public function adicionarAoCarrinho($idJogo) {
-        
+
+    public function adicionarAoCarrinho($idJogo)
+    {
+
         if ($idJogo <= 0) {
             $_SESSION['mensagem_erro'] = "ID do jogo inválido.";
             error_log("Tentativa de adicionar ID de jogo inválido ao carrinho: " . $idJogo);
@@ -40,8 +44,9 @@
         return true;
     }
 
-    public function removerDoCarrinho($idJogo) {
-        
+    public function removerDoCarrinho($idJogo)
+    {
+
         $key = array_search($idJogo, $_SESSION['carrinho']);
         if ($key !== false) {
             unset($_SESSION['carrinho'][$key]);
@@ -51,15 +56,18 @@
         }
     }
 
-    public function getJogosCarrinho() {
+    public function getJogosCarrinho()
+    {
         return $_SESSION['carrinho'] ?? [];
     }
 
-     public function limparCarrinho() {
+    public function limparCarrinho()
+    {
         $_SESSION['carrinho'] = [];
     }
 
-    public function finalizarCompra() {
+    public function finalizarCompra()
+    {
 
         $idUsuario = $_SESSION['usuario']['id'];
         $jogosCarrinho = $this->getJogosCarrinho();
@@ -70,21 +78,19 @@
             exit;
         }
 
-        $biblioteca = new Biblioteca($this->db); 
+        $biblioteca = new Biblioteca($this->db);
 
         if ($biblioteca->finalizarCompra($jogosCarrinho, $idUsuario)) {
-            
-            $this->limparCarrinho(); 
+
+            $this->limparCarrinho();
             $_SESSION['mensagem_sucesso'] = "Compra finalizada com sucesso! Seus jogos foram adicionados à sua biblioteca.";
-            header('Location: /view/navCliente/biblioteca.php'); 
+            header('Location: /view/navCliente/biblioteca.php');
             exit;
         } else {
-            
+
             $_SESSION['mensagem_erro'] = "Ocorreu um erro ao processar sua compra. Alguns jogos podem não ter sido adicionados. Por favor, verifique sua biblioteca ou tente novamente.";
             header('Location: /view/navCliente/Carrinho.php');
             exit;
         }
     }
 }
-
-?>

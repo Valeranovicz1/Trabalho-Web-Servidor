@@ -1,23 +1,27 @@
 <?php
 
-    class Conexao{
+namespace App\Model;
 
-        private static $instancia;
+use PDO;
+use Exception;
 
-        public static function get(){
+class Conexao
+{
 
-            try{
+    private static $instancia;
 
-                if(!isset(self::$instancia)){
-                    self::$instancia = new PDO('mysql:host=localhost;dbname=et_games','root','' );
-                }
+    public static function get()
+    {
 
-                return self::$instancia;
-            } catch(Exception $e){
-                throw new Exception($e->getMessage());
+        try {
+
+            if (!isset(self::$instancia)) {
+                self::$instancia = new PDO('mysql:host=localhost;dbname=et_games', 'root', '');
             }
 
+            return self::$instancia;
+        } catch (Exception $e) {
+            throw new Exception($e->getMessage());
         }
     }
-
-?>
+}

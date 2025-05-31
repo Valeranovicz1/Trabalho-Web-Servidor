@@ -1,5 +1,5 @@
 <?php
-
+    use App\Controllers\bibliotecaController;
     if (session_status() === PHP_SESSION_NONE) {
         session_start();
     }

@@ -1,38 +1,41 @@
 <?php
 
-    require_once __DIR__ . '/../Model/Conexao.php'; 
-    require_once __DIR__ . '/../Model/Suporte.php';
+namespace App\Controllers;
 
-    class SuporteController{
+use App\Model\Conexao;
+use App\Model\Suporte;
 
-        private $db;
+class SuporteController
+{
 
-        public function __construct() {
-            $this->db = Conexao::get();
-        }
+    private $db;
 
-        public function enviarMensagem(){
-
-            if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
-
-                return; 
-            }
-
-            $suporte = new Suporte($this->db);
-
-            $suporte->idUsuario = $_SESSION['usuario']['id'];
-            $suporte->mensagem = trim($_POST['mensagem'] ?? '');
-
-            if ($suporte->enviarMensagem()) {
-                $_SESSION['mensagem_sucesso'] = "Mensagem enviada com sucesso!";
-            } else {
-                $_SESSION['mensagem_erro'] = "Erro ao enviar Mensagem! Verifique os dados e tente novamente.";
-            }
-            header('Location: /suporte');
-            exit;
-
-        }
+    public function __construct()
+    {
+        $this->db = Conexao::get();
     }
 
+    public function enviarMensagem()
+    {
+        if (session_status() === PHP_SESSION_NONE) {
+            session_start();
+        }
+        if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
 
-?>
+            return;
+        }
+
+        $suporte = new Suporte($this->db);
+
+        $suporte->idUsuario = $_SESSION['usuario']['id'];
+        $suporte->mensagem = trim($_POST['mensagem'] ?? '');
+
+        if ($suporte->enviarMensagem()) {
+            $_SESSION['mensagem_sucesso'] = "Mensagem enviada com sucesso!";
+        } else {
+            $_SESSION['mensagem_erro'] = "Erro ao enviar Mensagem! Verifique os dados e tente novamente.";
+        }
+        header('Location: /suporte');
+        exit;
+    }
+}

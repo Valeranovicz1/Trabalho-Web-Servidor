@@ -14,7 +14,7 @@
 
 <body>
 
-        <main>
+    <main>
 
         <section class="carousel-section">
             <h2 class="text-white">AÇÃO</h2>
@@ -24,14 +24,13 @@
                     <?php if (!empty($jogosAcao)): ?>
                         <?php foreach ($jogosAcao as $jogo): ?>
 
-                            <?php  
+                            <?php
 
-                                $caminhoImagemDoBanco = $jogo['imagem'] ?? null;
-                                $imagemParaExibir = null;
-                                if (!empty($jogo['imagem'])) {
-                                    $imagemParaExibir = $imgPathPrefix . $caminhoImagemDoBanco;
-
-                                }   
+                            $caminhoImagemDoBanco = $jogo['imagem'] ?? null;
+                            $imagemParaExibir = null;
+                            if (!empty($jogo['imagem'])) {
+                                $imagemParaExibir = $imgPathPrefix . $caminhoImagemDoBanco;
+                            }
                             ?>
                             <div class="teste-item" onclick="openGameDetails( 
                                             '<?= htmlspecialchars($jogo['nome'] ?? 'Jogo', ENT_QUOTES, 'UTF-8') ?>',
@@ -60,14 +59,13 @@
                     <?php if (!empty($jogosFPS)): ?>
                         <?php foreach ($jogosFPS as $jogo): ?>
 
-                            <?php  
+                            <?php
 
-                                $caminhoImagemDoBanco = $jogo['imagem'] ?? null;
-                                $imagemParaExibir = null;
-                                if (!empty($jogo['imagem'])) {
-                                    $imagemParaExibir = $imgPathPrefix . $caminhoImagemDoBanco;
-
-                                }   
+                            $caminhoImagemDoBanco = $jogo['imagem'] ?? null;
+                            $imagemParaExibir = null;
+                            if (!empty($jogo['imagem'])) {
+                                $imagemParaExibir = $imgPathPrefix . $caminhoImagemDoBanco;
+                            }
                             ?>
                             <div class="teste-item" onclick="openGameDetails( 
                                     '<?= htmlspecialchars($jogo['nome'] ?? 'Jogo', ENT_QUOTES, 'UTF-8') ?>',
@@ -75,15 +73,15 @@
                                     '<?= htmlspecialchars($imagemParaExibir, ENT_QUOTES, 'UTF-8') ?>',
                                     '<?= htmlspecialchars($jogo['categoria'] ?? 'N/A', ENT_QUOTES, 'UTF-8') ?>'
                                 )">
-                            <img src="<?= htmlspecialchars($imagemParaExibir) ?>" alt="<?= htmlspecialchars($jogo['nome'] ?? 'Jogo', ENT_QUOTES, 'UTF-8') ?>">
-                            <p class="text-white"><?= htmlspecialchars($jogo['nome'] ?? 'Jogo', ENT_QUOTES, 'UTF-8') ?></p>
-                            <p class="text-success">R$<?= number_format(floatval($jogo['preco'] ?? 0), 2, ',', '.') ?></p>
+                                <img src="<?= htmlspecialchars($imagemParaExibir) ?>" alt="<?= htmlspecialchars($jogo['nome'] ?? 'Jogo', ENT_QUOTES, 'UTF-8') ?>">
+                                <p class="text-white"><?= htmlspecialchars($jogo['nome'] ?? 'Jogo', ENT_QUOTES, 'UTF-8') ?></p>
+                                <p class="text-success">R$<?= number_format(floatval($jogo['preco'] ?? 0), 2, ',', '.') ?></p>
                             </div>
-                            <?php endforeach; ?>
-                        <?php else: ?>
-                            <p class="text-white">Nenhum jogo de FPS para exibir no momento.</p>
-                        <?php endif; ?>
-                    </div>
+                        <?php endforeach; ?>
+                    <?php else: ?>
+                        <p class="text-white">Nenhum jogo de FPS para exibir no momento.</p>
+                    <?php endif; ?>
+                </div>
                 <button class="carousel-btn next-btn" onclick="scrollCarousel(this, 1)">&gt;</button>
             </div>
         </section>
@@ -91,16 +89,16 @@
     </main>
 
     <div id="gameModal" class="modal">
-    <div class="modal-content">
-        <span class="close" onclick="closeGameDetails()">&times;</span>
-        <img id="modalImage" src="" alt="Imagem do Jogo">
-        <h2 id="modalTitle"></h2>
-        <p id="modalPrice"></p>
-        <p id="modalDetails">Detalhes do jogo serão exibidos aqui.</p>
-        <button id="addToCartButton" class="add-to-cart-button" onclick="addToCart()">Colocar no Carrinho</button>
+        <div class="modal-content">
+            <span class="close" onclick="closeGameDetails()">&times;</span>
+            <img id="modalImage" src="" alt="Imagem do Jogo">
+            <h2 id="modalTitle"></h2>
+            <p id="modalPrice"></p>
+            <p id="modalDetails">Detalhes do jogo serão exibidos aqui.</p>
+            <button id="addToCartButton" class="add-to-cart-button" onclick="addToCart()">Colocar no Carrinho</button>
+        </div>
     </div>
-</div>
 
-<script src="/assets/js/scriptLoja.js" defer></script>
+    <script src="/assets/js/scriptLoja.js" defer></script>
 
-<?php include_once __DIR__ . '/../partials/footer.php';?>
+    <?php include_once __DIR__ . '/../partials/footer.php'; ?>

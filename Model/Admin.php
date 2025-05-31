@@ -1,9 +1,9 @@
 <?php
 
-    class Admin extends Usuario{
+namespace App\Model;
 
-        private $dataContratacao;
+class Admin extends Usuario
+{
 
-    }
-
-?>
+    private $dataContratacao;
+}

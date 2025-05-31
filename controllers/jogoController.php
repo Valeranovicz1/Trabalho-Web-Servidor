@@ -1,37 +1,44 @@
 <?php
 
-    require_once __DIR__ . '/../Model/Conexao.php'; 
-    require_once __DIR__ . '/../Model/Jogo.php';
-
-    if (session_status() === PHP_SESSION_NONE) {
-        session_start();
-    }
+namespace App\Controllers;
 
 
-class JogoController {
+use App\Model\Jogo;
+use App\Model\Conexao;
+
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
+
+
+class JogoController
+{
 
     private $db;
 
-    public function __construct() {
+    public function __construct()
+    {
         $this->db = Conexao::get();
     }
 
-    private function verificarAcessoEmpresa() {
+    private function verificarAcessoEmpresa()
+    {
         if (!isset($_SESSION['usuario']) || !isset($_SESSION['usuario']['id']) || !isset($_SESSION['usuario']['tipo']) || $_SESSION['usuario']['tipo'] !== 'empresa') {
-            header('Location: ../login/login.php?erro=acesso_negado_controller'); 
+            header('Location: /');
             exit;
         }
     }
 
-    public function cadastrarJogo() {
+    public function cadastrarJogo()
+    {
         $this->verificarAcessoEmpresa();
 
         if ($_SERVER['REQUEST_METHOD'] !== 'POST' || !isset($_POST['cadastrar'])) {
 
-             return; 
+            return;
         }
 
-        $imagemPathParaBanco = null; 
+        $imagemPathParaBanco = null;
 
         if (isset($_FILES['imagem_jogo']) && $_FILES['imagem_jogo']['error'] === UPLOAD_ERR_OK) {
             $arquivoTmp = $_FILES['imagem_jogo']['tmp_name'];
@@ -43,13 +50,13 @@ class JogoController {
                 $novoNomeArquivo = uniqid('jogo_img_', true) . '.' . $extensaoArquivo;
                 $diretorioRaizProjeto = dirname(__DIR__);
                 $diretorioStorage = $diretorioRaizProjeto . DIRECTORY_SEPARATOR . 'storage';
-                $subpastaImagensJogo = $diretorioStorage . DIRECTORY_SEPARATOR . 'imagens_jogos'; 
+                $subpastaImagensJogo = $diretorioStorage . DIRECTORY_SEPARATOR . 'imagens_jogos';
 
                 if (!is_dir($diretorioStorage)) {
                     if (!mkdir($diretorioStorage, 0775, true)) {
                         $_SESSION['mensagem_erro_jogo'] = "Falha crítica ao criar diretório de storage.";
                         error_log("Falha ao criar diretório: " . $diretorioStorage);
-                        header('Location: painelEmpresa.php');
+                        header('Location: /painel/painelEmpresa');
                         exit;
                     }
                 }
@@ -57,7 +64,7 @@ class JogoController {
                     if (!mkdir($subpastaImagensJogo, 0775, true)) {
                         $_SESSION['mensagem_erro_jogo'] = "Falha crítica ao criar subpasta de imagens do jogo.";
                         error_log("Falha ao criar diretório: " . $subpastaImagensJogo);
-                        header('Location: painelEmpresa.php');
+                        header('Location: /painel/painelEmpresa');
                         exit;
                     }
                 }
@@ -65,34 +72,33 @@ class JogoController {
                 $caminhoCompletoDestino = $subpastaImagensJogo . DIRECTORY_SEPARATOR . $novoNomeArquivo;
 
                 if (move_uploaded_file($arquivoTmp, $caminhoCompletoDestino)) {
-                    $imagemPathParaBanco = 'storage/imagens_jogos/' . $novoNomeArquivo; 
-
+                    $imagemPathParaBanco = 'storage/imagens_jogos/' . $novoNomeArquivo;
                 } else {
                     error_log("Falha ao mover arquivo de upload: de {$arquivoTmp} para {$caminhoCompletoDestino}. Verifique permissões e o caminho de destino. Existe a pasta {$subpastaImagensJogo}?");
                     $_SESSION['mensagem_erro_jogo'] = "Erro ao salvar a imagem do jogo. O upload pode ter falhado.";
-                    header('Location: painelEmpresa.php');
+                    header('Location: /painel/painelEmpresa');
                     exit;
                 }
             } else {
                 $_SESSION['mensagem_erro_jogo'] = "Tipo de arquivo de imagem inválido. Permitidos: " . implode(', ', $permitirExtensoes);
-                header('Location: painelEmpresa.php');
+                header('Location: /painel/painelEmpresa');
                 exit;
             }
         } elseif (isset($_FILES['imagem_jogo']) && $_FILES['imagem_jogo']['error'] !== UPLOAD_ERR_NO_FILE) {
             $_SESSION['mensagem_erro_jogo'] = "Ocorreu um erro durante o upload da imagem. Código: " . $_FILES['imagem_jogo']['error'];
             error_log("Erro de upload de imagem (código): " . $_FILES['imagem_jogo']['error']);
-            header('Location: painelEmpresa.php'); 
+            header('Location: /painel/painelEmpresa');
             exit;
         }
 
         if ($imagemPathParaBanco === null) {
 
-            if(isset($_FILES['imagem_jogo']) && $_FILES['imagem_jogo']['error'] === UPLOAD_ERR_NO_FILE) {
-                 $_SESSION['mensagem_erro_jogo'] = "A imagem do jogo é obrigatória.";
-            } else if (empty($_SESSION['mensagem_erro_jogo'])) { 
-                 $_SESSION['mensagem_erro_jogo'] = "Nenhuma imagem enviada ou falha no processamento da imagem.";
+            if (isset($_FILES['imagem_jogo']) && $_FILES['imagem_jogo']['error'] === UPLOAD_ERR_NO_FILE) {
+                $_SESSION['mensagem_erro_jogo'] = "A imagem do jogo é obrigatória.";
+            } else if (empty($_SESSION['mensagem_erro_jogo'])) {
+                $_SESSION['mensagem_erro_jogo'] = "Nenhuma imagem enviada ou falha no processamento da imagem.";
             }
-            header('Location: painelEmpresa.php');
+            header('Location: /painel/painelEmpresa');
             exit;
         }
 
@@ -101,14 +107,14 @@ class JogoController {
         $jogo->nome = trim($_POST['nome'] ?? '');
         $jogo->descricao = trim($_POST['descricao'] ?? '');
         $jogo->categoria = trim($_POST['categoria'] ?? '');
-        $jogo->foto = $imagemPathParaBanco; 
+        $jogo->foto = $imagemPathParaBanco;
 
         $precoPost = str_replace(',', '.', $_POST['preco'] ?? '0');
         $jogo->preco = filter_var($precoPost, FILTER_VALIDATE_FLOAT);
 
         if ($jogo->preco === false || $jogo->preco < 0) {
             $_SESSION['mensagem_erro_jogo'] = "Preço inválido fornecido.";
-            header('Location: painelEmpresa.php?erro=preco_invalido'); 
+            header('Location: /painel/painelEmpresa?erro=preco_invalido');
             exit;
         }
 
@@ -116,58 +122,55 @@ class JogoController {
         $jogo->idEmpresa = $_SESSION['usuario']['id'];
 
         if ($jogo->adicionarJogo()) {
-            $_SESSION['mensagem_sucesso_jogo'] = "Jogo '".htmlspecialchars($jogo->nome)."' adicionado com sucesso!";
+            $_SESSION['mensagem_sucesso_jogo'] = "Jogo '" . htmlspecialchars($jogo->nome) . "' adicionado com sucesso!";
         } else {
-            $_SESSION['mensagem_erro_jogo'] = "Erro ao adicionar o jogo '".htmlspecialchars($jogo->nome)."'. Verifique os dados e tente novamente.";
+            $_SESSION['mensagem_erro_jogo'] = "Erro ao adicionar o jogo '" . htmlspecialchars($jogo->nome) . "'. Verifique os dados e tente novamente.";
         }
-        header('Location: painelEmpresa.php');
+        header('Location: /painel/painelEmpresa');
         exit;
-        
-        
     }
 
-    public function excluirJogoPainel() {
+    public function excluirJogoPainel()
+    {
         $this->verificarAcessoEmpresa();
 
         if ($_SERVER['REQUEST_METHOD'] !== 'POST' || !isset($_POST['excluir'])) {
-            return; 
+            return;
         }
         $nomeExcluir = trim($_POST['nome_excluir'] ?? '');
         $idEmpresa = $_SESSION['usuario']['id'];
 
         if (!empty($nomeExcluir)) {
-            $jogo = new Jogo($this->db); 
-            if ($jogo->excluirJogo($nomeExcluir,$idEmpresa)) {
-                $_SESSION['mensagem_sucesso_jogo'] = "Jogo '".htmlspecialchars($nomeExcluir)."' excluído com sucesso!";
+            $jogo = new Jogo($this->db);
+            if ($jogo->excluirJogo($nomeExcluir, $idEmpresa)) {
+                $_SESSION['mensagem_sucesso_jogo'] = "Jogo '" . htmlspecialchars($nomeExcluir) . "' excluído com sucesso!";
             } else {
-                $_SESSION['mensagem_erro_jogo'] = "Erro ao excluir o jogo '".htmlspecialchars($nomeExcluir)."'.";
+                $_SESSION['mensagem_erro_jogo'] = "Erro ao excluir o jogo '" . htmlspecialchars($nomeExcluir) . "'.";
             }
         } else {
             $_SESSION['mensagem_erro_jogo'] = "Nenhum jogo selecionado para exclusão.";
         }
-        header('Location: painelEmpresa.php'); 
+        header('Location: /painel/painelEmpresa');
         exit;
-        
     }
 
-    public function listarJogosEmpresa(){
-        
-        if (isset($_POST['listar_empresa']) || (empty($_POST) && !empty($jogos)) ){
+    public function listarJogosEmpresa()
+    {
 
-            $this->verificarAcessoEmpresa(); 
+        if (isset($_POST['listar_empresa']) || (empty($_POST) && !empty($jogos))) {
+
+            $this->verificarAcessoEmpresa();
 
             $idEmpresa = $_SESSION['usuario']['id'];
             $jogo = new Jogo($this->db);
             return $jogo->listarJogosDaEmpresa($idEmpresa);
         }
     }
-    
-    public function listaJogosCategoria($categoria){
+
+    public function listaJogosCategoria($categoria)
+    {
 
         $jogo = new Jogo($this->db);
         return $jogo->listarJogosCategoria($categoria);
-
     }
-
 }
-?>

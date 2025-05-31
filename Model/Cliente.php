@@ -1,28 +1,38 @@
 <?php
 
-    class Cliente extends Usuario{
+namespace App\Model;
 
-        private $dataNascimento;
+use Exception;
 
-        public function __construct($conexaoDb) { 
 
-            $this->conexao = $conexaoDb;
-            $this->tipoUsuario = 'cliente';
+class Cliente extends Usuario
+{
+
+    private $dataNascimento;
+
+    public function __construct($conexaoDb)
+    {
+
+        $this->conexao = $conexaoDb;
+        $this->tipoUsuario = 'cliente';
+    }
+
+    public function getDataNascimento()
+    {
+        return $this->dataNascimento;
+    }
+
+    public function setDataNascimento($data)
+    {
+        $this->dataNascimento = $data;
+    }
+
+    public function registrarCliente()
+    {
+
+        if (empty($this->nome) || empty($this->email) ||  empty($this->nickname) ||  empty($this->senha) || empty($this->dataNascimento)) {
+            return false;
         }
-
-        public function getDataNascimento() {
-            return $this->dataNascimento;
-        }
-
-        public function setDataNascimento($data) {
-            $this->dataNascimento = $data;
-        }
-
-        public function registrarCliente(){
-
-            if (empty($this->nome) || empty($this->email) ||  empty($this->nickname) ||  empty($this->senha) || empty($this->dataNascimento)) {
-                return false;
-            }
 
         try {
 
@@ -63,24 +73,24 @@
 
             $this->conexao->commit();
             return true;
-
         } catch (Exception $e) {
-                if ($this->conexao && $this->conexao->inTransaction()) {
-                    $this->conexao->rollBack();
-                }
-
-                error_log("Exeção ao cadastrar cliente");
-                return false; 
-                }
-        }
-
-        public function editarPerfil(){
-
-            if (empty($this->nome) || empty($this->email) ||  empty($this->nickname) || empty($this->dataNascimento)) {
-                return false;
+            if ($this->conexao && $this->conexao->inTransaction()) {
+                $this->conexao->rollBack();
             }
 
-            try {
+            error_log("Exeção ao cadastrar cliente");
+            return false;
+        }
+    }
+
+    public function editarPerfil()
+    {
+
+        if (empty($this->nome) || empty($this->email) ||  empty($this->nickname) || empty($this->dataNascimento)) {
+            return false;
+        }
+
+        try {
 
 
             $this->conexao->beginTransaction();
@@ -114,16 +124,13 @@
 
             $this->conexao->commit();
             return true;
+        } catch (Exception $e) {
 
-            } catch (Exception $e) {
-                
-                if ($this->conexao && $this->conexao->inTransaction()) {
-                    $this->conexao->rollBack();
-                }
-                error_log("Exeção ao editar perfil");
-                return false;
-                }
+            if ($this->conexao && $this->conexao->inTransaction()) {
+                $this->conexao->rollBack();
             }
+            error_log("Exeção ao editar perfil");
+            return false;
         }
-
-?>
+    }
+}

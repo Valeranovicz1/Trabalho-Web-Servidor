@@ -1,30 +1,27 @@
 
 <?php
-require_once __DIR__ . '/vendor/autoload.php';
-require_once __DIR__ . '/controllers/LoginController.php';
-require_once __DIR__ . '/controllers/JogoController.php';
-require_once __DIR__ . '/controllers/RegisterController.php';
-require_once __DIR__ . '/controllers/BibliotecaController.php';
-require_once __DIR__ . '/controllers/SuporteController.php';
-require_once __DIR__ . '/controllers/ClienteController.php';
+require "vendor/autoload.php";
 
-
+use App\Controllers\ClienteController;
+use App\Controllers\LoginController;
+use App\Controllers\RegisterController;
+use App\Controllers\SuporteController;
+use App\Controllers\JogoController;
 use Pecee\SimpleRouter\SimpleRouter;
 
 SimpleRouter::get('/', function () {
     require_once __DIR__ . '/view/login/Login.php';
 });
 
-SimpleRouter::post('/', ['LoginController', 'login']);
+SimpleRouter::post('/', [\App\Controllers\LoginController::class, 'login']);
 
-SimpleRouter::get('/registro', function() {
+SimpleRouter::get('/registro', function () {
     require_once __DIR__ . '/view/login/Registro.php';
 });
+SimpleRouter::post('/registro', ['RegisterController', 'register']);
 
-SimpleRouter::post('/registro', ['RegisterController','register']);
 
-
-SimpleRouter::get('/loja', function() {
+SimpleRouter::get('/loja', function () {
 
     if (session_status() === PHP_SESSION_NONE) {
         session_start();
@@ -48,44 +45,44 @@ SimpleRouter::get('/loja', function() {
 
 
 
-SimpleRouter::match(['get','post'], '/painel/painelEmpresa.php', function() {
+SimpleRouter::match(['get', 'post'], '/painel/painelEmpresa.php', function () {
     require_once __DIR__ . '/view/painel/painelEmpresa.php';
 });
 
 
 
-SimpleRouter::get('/biblioteca', function() {
+SimpleRouter::get('/biblioteca', function () {
     require_once __DIR__ . '/view/navCliente/biblioteca.php';
 });
 
 
-SimpleRouter::get('/carrinho', function() {
+SimpleRouter::get('/carrinho', function () {
     require_once __DIR__ . 'view/navCliente/Carrinho.php';
 });
 
 
-SimpleRouter::get('/suporte', function() {
+SimpleRouter::get('/suporte', function () {
     require_once __DIR__ . '/view/navCliente/Suporte.php';
 });
 
 
-SimpleRouter::get('/sobre', function() {
+SimpleRouter::get('/sobre', function () {
     require_once __DIR__ . '/view/navCliente/Sobre.php';
 });
 
-SimpleRouter::post('/suporte', ['SuporteController','enviarMensagem']);
+SimpleRouter::post('/suporte', [\App\Controllers\SuporteController::class, 'enviarMensagem']);
 
-SimpleRouter::get('/minha-conta', function() {
+SimpleRouter::get('/minha-conta', function () {
     require_once __DIR__ . '/view/navCliente/MinhaConta.php';
 });
 
-SimpleRouter::get('/editar-conta', function() {
+SimpleRouter::get('/editar-conta', function () {
     require_once __DIR__ . '/view/navCliente/EditarConta.php';
 });
 
-SimpleRouter::post('/editar-conta', ['ClienteController','editarPerfil']);
+SimpleRouter::post('/editar-conta', [\App\Controllers\ClienteController::class, 'editarPerfil']);
 
-SimpleRouter::get('/logout', function() {
+SimpleRouter::get('/logout', function () {
     session_start();
     session_destroy();
     header('Location: /');
@@ -93,7 +90,7 @@ SimpleRouter::get('/logout', function() {
 });
 
 
-SimpleRouter::match(['get','post'], '/painel/painelEmpresa', function() {
+SimpleRouter::match(['get', 'post'], '/painel/painelEmpresa', function () {
     require_once __DIR__ . '/view/painel/painelEmpresa.php';
 });
 

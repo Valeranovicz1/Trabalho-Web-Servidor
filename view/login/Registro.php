@@ -1,9 +1,8 @@
 <?php
-
-    require_once __DIR__ . '/../../Model/Conexao.php';   
-    require_once __DIR__ . '/../../Model/Usuario.php';    
-    require_once __DIR__ . '/../../Model/Cliente.php';
-    require_once __DIR__ . '/../../controllers/registerController.php';
+namespace App\Controllers;
+use Exception;
+use App\Model\Usuario;
+use App\Model\Conexao;
 
     $registerController = new RegisterController();
 

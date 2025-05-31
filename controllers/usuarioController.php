@@ -1,8 +1,12 @@
 <?php
 
-class UsuarioController {
+namespace App\Controllers;
 
-    public function visualizarPerfil() {
+class UsuarioController
+{
+
+    public function visualizarPerfil()
+    {
         session_start();
 
         if (!isset($_SESSION['usuario'])) {
@@ -11,10 +15,11 @@ class UsuarioController {
         }
 
         $usuario = $_SESSION['usuario'];
-        include __DIR__ . '/../views/perfil/perfil.php'; 
+        include __DIR__ . '/../views/perfil/perfil.php';
     }
 
-    public function editarPerfil() {
+    public function editarPerfil()
+    {
         session_start();
 
         if (!isset($_SESSION['usuario'])) {

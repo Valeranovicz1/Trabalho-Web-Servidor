@@ -1,25 +1,32 @@
 <?php
 
-    require_once __DIR__ . '/../Model/Conexao.php'; 
-    require_once __DIR__ . '/../Model/Usuario.php';
+namespace App\Controllers;
+use App\Model\Conexao;
 
-    if (session_status() === PHP_SESSION_NONE) {
-        session_start();
-    }
-    
-    class LoginController{
+use Exception;
+use App\Model\Usuario;
 
-        private $db;
 
-        public function __construct() { 
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
+
+class LoginController
+{
+
+    private $db;
+
+    public function __construct()
+    {
 
         $this->db = Conexao::get();
     }
 
-        public function login() {
+    public function login()
+    {
 
         $nickname = trim($_POST['nickname'] ?? '');
-        $senha = $_POST['senha'] ?? ''; 
+        $senha = $_POST['senha'] ?? '';
 
         if (empty($nickname) || empty($senha)) {
 
@@ -39,16 +46,16 @@
                 'nome' => $usuario['nome'],
                 'nickname' => $usuario['nickname'],
                 'email' => $usuario['email'],
-                'tipo' => $usuario['tipo_usuario'] 
+                'tipo' => $usuario['tipo_usuario']
             ];
 
             if ($usuario['tipo_usuario'] === 'empresa') {
-                header('Location: ../painel/painelEmpresa.php');
+                header('Location: ../painel/painelEmpresa');
             } elseif ($usuario['tipo_usuario'] === 'cliente') {
                 header('Location: /loja');
             } else {
-                session_destroy(); 
-                header('Location: ../../view/login/Login.php?erro=tipo_desconhecido');
+                session_destroy();
+                header('Location: /');
             }
             exit;
         } else {
@@ -57,22 +64,20 @@
             header('Location:../../view/login/Login.php?erro=erro_login' . urlencode($codigoErro));
             exit;
         }
-    } 
-        
-        public function logout(){
-
-            if (isset($_COOKIE['user_token'])) {
-                setcookie('user_token', '', time() - 3600, '/', '', isset($_SERVER['HTTPS']), true); 
-            }
-        
-            session_start(); 
-            $_SESSION = []; 
-            session_destroy(); 
-        
-            header("Location: view/login/login.php");
-            exit;
-        }
-
     }
 
+    public function logout()
+    {
 
+        if (isset($_COOKIE['user_token'])) {
+            setcookie('user_token', '', time() - 3600, '/', '', isset($_SERVER['HTTPS']), true);
+        }
+
+        session_start();
+        $_SESSION = [];
+        session_destroy();
+
+        header("Location: view/login/login.php");
+        exit;
+    }
+}

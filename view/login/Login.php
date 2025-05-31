@@ -1,5 +1,7 @@
 <?php
-
+namespace App\Controllers;
+use Exception;
+use App\Model\Usuario;
     if (session_status() === PHP_SESSION_NONE) {
         session_start();
     }

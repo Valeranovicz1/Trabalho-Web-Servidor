@@ -1,5 +1,7 @@
 <?php
-
+    if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
     $nome = $_SESSION['usuario']['nome'] ?? 'Não definido';
     $email = $_SESSION['usuario']['email'] ?? 'Não definido';
 
