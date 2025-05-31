@@ -68,6 +68,14 @@ Configure o seu composer.
 <pre>composer install
 composer dump-autoload
 composer require pecee/simple-router
+Você deve inserir o autoload no composer.json:
+    "autoload": {
+    "psr-4": {
+      "App\\Model\\": "Model/",
+      "App\\Controllers\\": "controllers/"
+    }
+  }
+
 composer dump-autoload
 php -S localhost:8000</pre>
 
