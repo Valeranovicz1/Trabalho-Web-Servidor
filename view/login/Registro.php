@@ -1,29 +1,26 @@
 <?php
+
 namespace App\Controllers;
-use Exception;
-use App\Model\Usuario;
-use App\Model\Conexao;
 
-    $registerController = new RegisterController();
 
-    if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+$registerController = new RegisterController();
 
-        $registerController->register();
-    }
-    
-    if(!defined('BASE_URL')){
-    define('BASE_URL','/Trabalho-Web-Servidor');
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+
+    $registerController->register();
 }
+
 
 ?>
 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Registro - ET Games</title>
-    <link rel="icon" href="<?= BASE_URL ?>/assets/img/logo/logo.png" type="image/png">
+    <link rel="icon" href="/assets/img/logo/logo.png" type="image/png">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-SgOJa3DmI69IUzQ2PVdRZhwQ+dy64/BUtbMJw1MZ8t5HZApcHrRKUc4W0kG879m7" crossorigin="anonymous">
     <style>
         body {
@@ -34,9 +31,10 @@ use App\Model\Conexao;
             height: 100vh;
             margin: 0;
         }
+
         .registro-container {
             text-align: center;
-            background-color:rgb(26, 26, 26);
+            background-color: rgb(26, 26, 26);
             padding: 20px;
             border-radius: 10px;
             box-shadow: 0 4px 10px rgba(0, 110, 0, 0.5);
@@ -85,13 +83,14 @@ use App\Model\Conexao;
         }
     </style>
 </head>
+
 <body>
     <div class="registro-container">
         <a href="/" class="back-icon">
-            <img src="<?= BASE_URL ?>/assets/img/outros/icovoltar.webp" alt="Voltar">
+            <img src="/assets/img/outros/icovoltar.webp" alt="Voltar">
         </a>
         <div class="logo">
-            <img src="<?= BASE_URL ?>/assets/img/logo/logo.png" alt="ET Games Logo">
+            <img src="/assets/img/logo/logo.png" alt="ET Games Logo">
             <h1 class="text-success">ET Games</h1>
         </div>
 
@@ -101,7 +100,7 @@ use App\Model\Conexao;
             <p style="color: red;"><?php echo htmlspecialchars($erro); ?></p>
         <?php endif; ?>
 
-       <form method="POST" action="/registro">
+        <form method="POST" action="/registro">
             <div class="form-group">
                 <input type="text" id="nome" name="nome" placeholder="Nome">
             </div>
@@ -117,10 +116,11 @@ use App\Model\Conexao;
             <div class="form-group">
                 <input type="date" id="data_nascimento" name="data_nascimento">
             </div>
-           <button type="submit" class="btn btn-success">Registrar</button>
+            <button type="submit" class="btn btn-success">Registrar</button>
         </form>
 
-        
+
     </div>
 </body>
+
 </html>
