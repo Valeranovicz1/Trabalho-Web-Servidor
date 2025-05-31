@@ -52,7 +52,7 @@ class LoginController
             if ($usuario['tipo_usuario'] === 'empresa') {
                 header('Location: /painelEmpresa');
             } elseif ($usuario['tipo_usuario'] === 'cliente') {
-                header('Location: /loja');
+                header('Location: /loja');  
             } else {
                 session_destroy();
                 header('Location: /');

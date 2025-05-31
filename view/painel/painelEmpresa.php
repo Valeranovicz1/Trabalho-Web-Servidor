@@ -59,7 +59,7 @@ unset($_SESSION['mensagem_sucesso_jogo'], $_SESSION['mensagem_erro_jogo']);
         <?php endif; ?>
 
         <h2 class="text-white">Cadastrar Novo Jogo</h2>
-        <form method="POST" action="/painel/painelEmpresa" enctype="multipart/form-data">
+        <form method="POST" action="/painelEmpresa" enctype="multipart/form-data">
 
             <label class="text-success form-label" for="nome">Nome do Jogo:</label>
             <input class="form-control" type="text" id="nome" name="nome" required>
@@ -87,7 +87,7 @@ unset($_SESSION['mensagem_sucesso_jogo'], $_SESSION['mensagem_erro_jogo']);
         </form>
 
         <h2 class="text-white">Excluir Jogo</h2>
-        <form method="POST" action="/painel/painelEmpresa">
+        <form method="POST" action="/painelEmpresa">
 
             <label class="text-success form-label" for="nome_excluir">Selecione o jogo para excluir:</label>
             <select class="form-select" id="nome_excluir" name="nome_excluir" required>

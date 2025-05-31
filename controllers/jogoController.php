@@ -56,7 +56,7 @@ class JogoController
                     if (!mkdir($diretorioStorage, 0775, true)) {
                         $_SESSION['mensagem_erro_jogo'] = "Falha crítica ao criar diretório de storage.";
                         error_log("Falha ao criar diretório: " . $diretorioStorage);
-                        header('Location: /painel/painelEmpresa');
+                        header('Location: /painelEmpresa');
                         exit;
                     }
                 }
@@ -64,7 +64,7 @@ class JogoController
                     if (!mkdir($subpastaImagensJogo, 0775, true)) {
                         $_SESSION['mensagem_erro_jogo'] = "Falha crítica ao criar subpasta de imagens do jogo.";
                         error_log("Falha ao criar diretório: " . $subpastaImagensJogo);
-                        header('Location: /painel/painelEmpresa');
+                        header('Location: /painelEmpresa');
                         exit;
                     }
                 }
@@ -76,18 +76,18 @@ class JogoController
                 } else {
                     error_log("Falha ao mover arquivo de upload: de {$arquivoTmp} para {$caminhoCompletoDestino}. Verifique permissões e o caminho de destino. Existe a pasta {$subpastaImagensJogo}?");
                     $_SESSION['mensagem_erro_jogo'] = "Erro ao salvar a imagem do jogo. O upload pode ter falhado.";
-                    header('Location: /painel/painelEmpresa');
+                    header('Location: /painelEmpresa');
                     exit;
                 }
             } else {
                 $_SESSION['mensagem_erro_jogo'] = "Tipo de arquivo de imagem inválido. Permitidos: " . implode(', ', $permitirExtensoes);
-                header('Location: /painel/painelEmpresa');
+                header('Location: /painelEmpresa');
                 exit;
             }
         } elseif (isset($_FILES['imagem_jogo']) && $_FILES['imagem_jogo']['error'] !== UPLOAD_ERR_NO_FILE) {
             $_SESSION['mensagem_erro_jogo'] = "Ocorreu um erro durante o upload da imagem. Código: " . $_FILES['imagem_jogo']['error'];
             error_log("Erro de upload de imagem (código): " . $_FILES['imagem_jogo']['error']);
-            header('Location: /painel/painelEmpresa');
+            header('Location: /painelEmpresa');
             exit;
         }
 
@@ -98,7 +98,7 @@ class JogoController
             } else if (empty($_SESSION['mensagem_erro_jogo'])) {
                 $_SESSION['mensagem_erro_jogo'] = "Nenhuma imagem enviada ou falha no processamento da imagem.";
             }
-            header('Location: /painel/painelEmpresa');
+            header('Location: /painelEmpresa');
             exit;
         }
 
@@ -114,7 +114,7 @@ class JogoController
 
         if ($jogo->preco === false || $jogo->preco < 0) {
             $_SESSION['mensagem_erro_jogo'] = "Preço inválido fornecido.";
-            header('Location: /painel/painelEmpresa?erro=preco_invalido');
+            header('Location: /painelEmpresa?erro=preco_invalido');
             exit;
         }
 
@@ -126,7 +126,7 @@ class JogoController
         } else {
             $_SESSION['mensagem_erro_jogo'] = "Erro ao adicionar o jogo '" . htmlspecialchars($jogo->nome) . "'. Verifique os dados e tente novamente.";
         }
-        header('Location: /painel/painelEmpresa');
+        header('Location: /painelEmpresa');
         exit;
     }
 
@@ -150,7 +150,7 @@ class JogoController
         } else {
             $_SESSION['mensagem_erro_jogo'] = "Nenhum jogo selecionado para exclusão.";
         }
-        header('Location: /painel/painelEmpresa');
+        header('Location: /painelEmpresa');
         exit;
     }
 
