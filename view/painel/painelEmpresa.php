@@ -68,16 +68,20 @@ unset($_SESSION['mensagem_sucesso_jogo'], $_SESSION['mensagem_erro_jogo']);
             <input class="form-control" type="text" id="descricao" name="descricao" required>
 
             <label class="text-success form-label" for="categoria">Categoria:</label>
-            <input class="form-control" type="text" id="categoria" name="categoria">
+            <select class="form-select" aria-label="categoria" id="categoria" name="categoria" required>
+                <option selected>Selecione uma Categoria</option>
+                <option value="FPS">FPS</option>
+                <option value="Ação">Ação</option>
+            </select>
 
             <label class="text-success form-label" for="imagem_jogo">Imagem do Jogo:</label>
             <input class="form-control" type="file" id="imagem_jogo" name="imagem_jogo">
 
             <label class="text-success form-label" for="preco">Preço (R$):</label>
-            <input class="form-control" type="text" id="preco" name="preco" placeholder="Ex: 29,90 ou 29.90" required>
+            <input class="form-control" type="text" id="preco" name="preco" placeholder="Ex: 29,90" required>
 
-            <label class="text-success form-label" for="classificacao">Classificação:</label>
-            <input class="form-control" type="text" id="classificacao" name="classificacao" required>
+            <label class="text-success form-label" for="classificacao">Classificação (0-21):</label>
+            <input class="form-control" type="number" id="classificacao" name="classificacao" min="0" max="21" required>
 
             <button type="submit" name="cadastrar" class="btn btn-success">Cadastrar Jogo</button>
         </form>
@@ -87,7 +91,7 @@ unset($_SESSION['mensagem_sucesso_jogo'], $_SESSION['mensagem_erro_jogo']);
 
             <label class="text-success form-label" for="nome_excluir">Selecione o jogo para excluir:</label>
             <select class="form-select" id="nome_excluir" name="nome_excluir" required>
-                <option value="">-- Selecione um Jogo --</option>
+                <option value="">Selecione um Jogo</option>
                 <?php if (!empty($jogos)): ?>
                     <?php foreach ($jogos as $jogo): ?>
                         <option value="<?php echo htmlspecialchars($jogo['nome']); ?>">

@@ -23,6 +23,7 @@
       onclick="toggleAccountMenu()"
     >
     <div class="account-dropdown" id="accountDropdown">
+      <a href="/minha-conta">Ir para a conta</a>
       <a href="/logout">Sair</a>
     </div>
   </div>

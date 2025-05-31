@@ -19,7 +19,11 @@ unset($_SESSION['mensagem_sucesso'], $_SESSION['mensagem_erro']);
 if ($tipo === 'cliente') {
     $backUrl =  '/loja';
 } 
-
+if ($tipo === 'empresa') {
+    $backUrl = '/painelEmpresa';
+} else {
+    $backUrl = '/';
+}
 ?>
 
 
