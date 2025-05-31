@@ -1,26 +1,25 @@
 <?php
+
 namespace App\Controllers;
-use Exception;
-use App\Model\Usuario;
-    if (session_status() === PHP_SESSION_NONE) {
-        session_start();
+
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
+
+
+if (isset($_SESSION['usuario'])) {
+
+    if ($_SESSION['usuario']['tipo'] === 'empresa') {
+        header('Location: ../painel/painelEmpresa.php');
+    } else {
+        header('Location: ../painel/painelCliente.php');
     }
+    exit;
+}
 
-    require_once __DIR__ . '/../../controllers/LoginController.php';
-
-    if (isset($_SESSION['usuario'])) {
-            
-                if ($_SESSION['usuario']['tipo'] === 'empresa') {
-                    header('Location: ../painel/painelEmpresa.php');
-                } else {
-                    header('Location: ../painel/painelCliente.php');
-                }
-                exit;
-        }
-
-    if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-        $loginController = new LoginController();
-        $loginController->login();
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $loginController = new LoginController();
+    $loginController->login();
 }
 
 ?>
@@ -46,7 +45,7 @@ use App\Model\Usuario;
 
         .login-container {
             text-align: center;
-            background-color:rgb(26, 26, 26);
+            background-color: rgb(26, 26, 26);
             padding: 20px;
             border-radius: 10px;
             box-shadow: 0 4px 10px rgba(0, 110, 0, 0.5);
@@ -95,7 +94,7 @@ use App\Model\Usuario;
         </div>
         <h2 class="text-light">Login</h2>
 
-       <form action="/" method="POST">
+        <form action="/" method="POST">
             <div class="form-group">
                 <input type="text" id="nickname" name="nickname" placeholder="Nickname" required>
             </div>
