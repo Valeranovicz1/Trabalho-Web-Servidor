@@ -57,7 +57,7 @@ SimpleRouter::get('/biblioteca', function () {
 
 
 SimpleRouter::get('/carrinho', function () {
-    require_once __DIR__ . 'view/navCliente/Carrinho.php';
+    require_once __DIR__ . '/view/navCliente/Carrinho.php';
 });
 
 
@@ -90,7 +90,7 @@ SimpleRouter::get('/logout', function () {
 });
 
 
-SimpleRouter::match(['get', 'post'], '/painel/painelEmpresa', function () {
+SimpleRouter::match(['get', 'post'], '/painelEmpresa', function () {
     require_once __DIR__ . '/view/painel/painelEmpresa.php';
 });
 
