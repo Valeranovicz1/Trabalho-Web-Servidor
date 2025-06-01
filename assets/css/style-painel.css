@@ -6,19 +6,17 @@ body {
     color: #333;
 }
 
-
-
 header h1 {
     margin: 0;
     font-size: 2.5em;
 }
 
 nav {
-    display: flex; /* Torna o contêiner flexível */
-    justify-content: center; /* Centraliza os itens horizontalmente */
-    align-items: center; /* Alinha os itens verticalmente */
+    display: flex;
+    justify-content: center;
+    align-items: center;
     padding: 0.5rem 0;
-    gap: 1rem; /* Espaçamento entre os links */
+    gap: 1rem;
 }
 
 nav a {
@@ -39,7 +37,6 @@ section {
     margin-bottom: 20px;
 }
 
-/* Estilo para o cabeçalho */
 section h2 {
     color: #ffffff;
     border-bottom: 2px solid #ddd;
@@ -53,7 +50,6 @@ footer {
     margin-top: 20px;
 }
 
-/* Estilos específicos para a página de suporte */
 .suporte-container {
     max-width: 800px;
     margin: 50px auto;
@@ -78,7 +74,8 @@ footer {
     color: #555;
 }
 
-.form-group input, .form-group textarea {
+.form-group input,
+.form-group textarea {
     width: 100%;
     padding: 10px;
     border: 1px solid #ccc;
@@ -105,7 +102,7 @@ footer {
 .btn-submit:hover {
     background-color: #0056b3;
 }
-/* Estilo para o container da logo */
+
 .logo-container {
     display: flex;
     align-items: center;
@@ -114,135 +111,130 @@ footer {
 }
 
 .logo {
-    width: 100px; /* Ajuste o tamanho da logo conforme necessário */
+    width: 100px;
     height: auto;
 }
+
 .logo-text {
-    width: 260px; /* Define a largura da imagem para 200px */
-    height: auto; /* Mantém a proporção da altura */
+    width: 260px;
+    height: auto;
     margin: 0 auto;
     display: block;
-    transform: translateX(-50px); /* Move um pouco para a esquerda */
+    transform: translateX(-50px);
 }
-/* Estilo do container do carrossel */
+
 .teste-container {
     position: relative;
-    max-width: 80%; /* Aumente a largura máxima */
+    max-width: 80%;
     margin: 20px auto;
     overflow: hidden;
     background-color: #1e1e1e;
     border-radius: 8px;
-    padding: 20px; /* Aumente o padding para mais espaço interno */
+    padding: 20px;
 }
 
-/* Estilo do carrossel */
 .teste {
     display: flex;
-    gap: 10%; /* Ajuste o espaçamento entre os itens */
+    gap: 10%;
     transition: transform 0.5s ease-in-out;
 }
 
 .teste-item {
     min-width: 20%;
-    max-width: 250px; /* Isso limita a largura do contêiner da imagem */
+    max-width: 250px;
     text-align: center;
     padding: 10px;
     box-sizing: border-box;
     transition: transform 0.3s ease-in-out;
-    border: 1px solid blue; 
+    border: 1px solid blue;
 }
 
 .teste-item img {
-    max-width: 100%;  /* A imagem não será mais larga que o .teste-item */
-    height: auto;     /* A altura será ajustada para manter a proporção original da imagem */
-    object-fit: contain; /* Garante que toda a imagem seja visível dentro das dimensões acima */
-    border: 1px solid red; /* Mantenha para depuração */
-    display: block;        /* Ajuda com o comportamento de block-level para dimensões */
-    margin-left: auto;     /* Para centralizar a imagem se ela for mais estreita que 100% (com object-fit:contain) */
-    margin-right: auto;    /* Para centralizar a imagem */
+    max-width: 100%;
+    height: auto;
+    object-fit: contain;
+    border: 1px solid red;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .teste-item p {
     margin: 5px 0;
     color: #c7d5e0;
-    padding-left: 50px; /* Move o texto um pouco para a direita */
+    padding-left: 50px;
 }
 
 .teste-item:hover {
-    transform: scale(1.1); /* Aumenta o tamanho em 10% */
-    z-index: 5; /* Garante que o item fique acima dos outros */
+    transform: scale(1.1);
+    z-index: 5;
 }
 
-
-
-.carousel-btn { 
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    background-color: #171a21;
-    color: #c7d5e0;
-    border: none;
-    padding: 10px 20px;
+.game-card {
+    background-color: #2a2a2a;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
     cursor: pointer;
-    font-size: 18px;
-    border-radius: 4px;
-    z-index: 10;
-}
-
-.carousel-btn:hover {
-    background-color: #66c0f4;
-}
-
-.prev-btn {
-    left: 10px;
-}
-
-.next-btn {
-    right: 10px;
-}
-/* Estilo do modal */
-.modal {
-    display: none; /* Oculta o modal por padrão */
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    margin-bottom: 20px;
     height: 100%;
-    background-color: rgba(0, 0, 0, 0.8); /* Fundo escuro com transparência */
-    justify-content: center;
-    align-items: center;
-    z-index: 1000;
+    display: flex;
+    flex-direction: column;
+}
+
+.game-card:hover {
+    transform: translateY(-5px) scale(1.03);
+    box-shadow: 0 6px 16px rgba(0, 180, 0, 0.4);
+}
+
+.game-image {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+}
+
+.game-info {
+    padding: 10px;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.game-title {
+    font-weight: bold;
+    margin-bottom: 5px;
+    font-size: 1rem;
+}
+
+.game-price {
+    font-weight: bold;
+    margin-bottom: 0;
+}
+
+.carousel-control-prev,
+.carousel-control-next {
+    width: 5%;
+    background-color: rgba(0, 0, 0, 0.5);
+    border-radius: 0 8px 8px 0;
+}
+
+.carousel-control-next {
+    border-radius: 8px 0 0 8px;
+}
+
+.carousel-item {
+    padding: 20px;
 }
 
 .modal-content {
     background-color: #1e1e1e;
-    padding: 20px;
-    border-radius: 10px;
-    text-align: center;
     color: #ffffff;
-    width: 80%;
-    max-width: 400px;
-    position: relative;
 }
 
-.modal-content img {
-    width: 200px; /* Redimensiona a imagem */
-    height: 200px; /* Redimensiona a imagem */
-    object-fit: cover;
-    border-radius: 8px;
-    margin-bottom: 15px;
-}
-
-.modal-content h2 {
-    font-size: 24px;
-    margin-bottom: 10px;
-    color: #00ff00;
-}
-
-.modal-content p {
-    font-size: 16px;
-    margin-bottom: 10px;
-    color: #c7d5e0;
+.btn-close-white {
+    filter: invert(1) grayscale(100%) brightness(200%);
 }
 
 .add-to-cart-button {
@@ -270,14 +262,10 @@ footer {
     cursor: pointer;
 }
 
-
-
-/* Estilo para o menu da conta */
-
 .account-menu {
     position: absolute;
     top: 30px;
-    right: 50px; /* Altera para o canto superior direito */
+    right: 50px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -299,7 +287,7 @@ footer {
     display: none;
     position: absolute;
     top: 50px;
-    right: 0; /* Altere "left" para "right" para posicionar à esquerda */
+    right: 0;
     background-color: #1e1e1e;
     border: 1px solid #198754;
     border-radius: 5px;
@@ -330,7 +318,7 @@ footer {
 .suporte-container {
     max-width: 800px;
     margin: 50px auto;
-    background: #2a2a2a; /* Fundo escuro */
+    background: #2a2a2a;
     padding: 30px;
     border-radius: 10px;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.8);
@@ -338,7 +326,7 @@ footer {
 
 .suporte-container h1 {
     text-align: center;
-    color: #00ff00; /* Verde neon para destaque */
+    color: #00ff00;
     margin-bottom: 20px;
 }
 
@@ -349,21 +337,22 @@ footer {
 .form-group label {
     display: block;
     margin-bottom: 8px;
-    color: #c7d5e0; /* Cinza claro */
+    color: #c7d5e0;
 }
 
-.form-group input, .form-group textarea {
+.form-group input,
+.form-group textarea {
     width: 100%;
     padding: 12px;
     border: 1px solid #444;
     border-radius: 5px;
-    background-color: #1e1e1e; /* Fundo dos inputs */
-    color: #ffffff; /* Texto claro */
+    background-color: #1e1e1e;
+    color: #ffffff;
 }
 
 .form-group input::placeholder,
 .form-group textarea::placeholder {
-    color: #888; /* Placeholder mais suave */
+    color: #888;
 }
 
 .form-group textarea {
@@ -375,8 +364,8 @@ footer {
     display: block;
     width: 100%;
     padding: 12px;
-    background-color: #00ff00; /* Botão verde neon */
-    color: #121212; /* Texto escuro para contraste */
+    background-color: #00ff00;
+    color: #121212;
     border: none;
     border-radius: 5px;
     font-size: 18px;
@@ -386,10 +375,9 @@ footer {
 }
 
 .btn-submit:hover {
-    background-color: #028202; /* Verde mais forte no hover */
+    background-color: #028202;
 }
 
-/* Estilos específicos para a página Sobre - Dark Theme */
 .sobre-container {
     max-width: 1000px;
     margin: 50px auto;
@@ -411,7 +399,8 @@ footer {
     padding-bottom: 5px;
 }
 
-.sobre-container p, .sobre-container ul {
+.sobre-container p,
+.sobre-container ul {
     font-size: 18px;
     color: #c7d5e0;
     line-height: 1.6;
@@ -478,69 +467,69 @@ footer {
 }
 
 .game-filter-section {
-        margin-top: 20px;
-        padding: 15px;
-        background-color: #1e1e1e;
-        border-radius: 8px;
-        text-align: center;
-        margin-bottom: 20px;
-    }
+    margin-top: 20px;
+    padding: 15px;
+    background-color: #1e1e1e;
+    border-radius: 8px;
+    text-align: center;
+    margin-bottom: 20px;
+}
 
-    .game-filter-section label {
-        color: #00ff00;
-        margin-right: 10px;
-    }
+.game-filter-section label {
+    color: #00ff00;
+    margin-right: 10px;
+}
 
-    .game-filter-section select {
-        padding: 8px;
-        border: 1px solid #333;
-        border-radius: 4px;
-        background-color: #2a2a2a;
-        color: #c7d5e0;
-    }
+.game-filter-section select {
+    padding: 8px;
+    border: 1px solid #333;
+    border-radius: 4px;
+    background-color: #2a2a2a;
+    color: #c7d5e0;
+}
 
-    .game-filter-section input[type="submit"] {
-        padding: 8px 15px;
-        border: none;
-        border-radius: 4px;
-        background-color: #00ff00;
-        color: #121212;
-        cursor: pointer;
-        transition: background-color 0.3s ease;
-    }
+.game-filter-section input[type="submit"] {
+    padding: 8px 15px;
+    border: none;
+    border-radius: 4px;
+    background-color: #00ff00;
+    color: #121212;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
 
-    .game-filter-section input[type="submit"]:hover {
-        background-color: #00cc00;
-    }
+.game-filter-section input[type="submit"]:hover {
+    background-color: #00cc00;
+}
 
-    .game-grid-section {
-        padding: 20px;
-        background-color: #1e1e1e;
-        border-radius: 8px;
-    }
+.game-grid-section {
+    padding: 20px;
+    background-color: #1e1e1e;
+    border-radius: 8px;
+}
 
-    .game-grid-section h2 {
-        color: #00ff00;
-        margin-bottom: 15px;
-        text-align: center;
-    }
+.game-grid-section h2 {
+    color: #00ff00;
+    margin-bottom: 15px;
+    text-align: center;
+}
 
 .game-grid-container {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); 
-    gap: 20px; 
+    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+    gap: 20px;
 }
 
 .game-item {
     background-color: #2a2a2a;
-    border-radius: 8px;     
-    overflow: hidden;        
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5); 
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
     cursor: pointer;
     transition: transform 0.2s ease, box-shadow 0.2s ease;
-    display: flex;           
+    display: flex;
     flex-direction: column;
-    text-decoration: none;   
+    text-decoration: none;
 }
 
 .game-item:hover {
@@ -549,31 +538,30 @@ footer {
 }
 
 .game-image-wrapper {
-    width: 100%;           
+    width: 100%;
     padding-top: 100%;
-    position: relative;      
-    background-color: #333; 
+    position: relative;
+    background-color: #333;
 }
 
 .game-image-wrapper img {
-    position: absolute; 
+    position: absolute;
     top: 0;
     left: 0;
-    width: 100%; 
+    width: 100%;
     height: 100%;
     object-fit: cover;
     display: block;
 }
 
-
 .game-title p {
     margin: 0 0 4px 0;
-    font-size: 0.95em;  
+    font-size: 0.95em;
     font-weight: bold;
     color: #e0e0e0;
-    white-space: nowrap;  
-    overflow: hidden;       
-    text-overflow: ellipsis; /
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 .game-category p {
