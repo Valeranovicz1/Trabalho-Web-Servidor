@@ -1,92 +1,66 @@
-# Projeto Web em PHP - ET Games
+<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
 
-## 📋 Informações Gerais
-Este repositório contém o código-fonte e a documentação do trabalho da disciplina de Web-Servidor, desenvolvido conforme as diretrizes fornecidas pelo professor. A estrutura segue o padrão MVC.
+<p align="center">
+<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
+<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
+<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
+<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
+</p>
 
-## 👨‍💻 Integrantes do Grupo
-Eduardo Massuqueto de Andrade | Thomas Valeranovicz
+## About Laravel
 
-## 💡 Descrição do Projeto
-O projeto consiste em um aplicativo web com foco na aquisição de jogos digitais, simulando uma loja virtual de games. 
+Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
 
-## ✅ Funcionalidades
-Os usuários podem se cadastrar, realizar login e acessar diversas funcionalidades, como:
+- [Simple, fast routing engine](https://laravel.com/docs/routing).
+- [Powerful dependency injection container](https://laravel.com/docs/container).
+- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
+- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
+- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
+- [Robust background job processing](https://laravel.com/docs/queues).
+- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
 
-  - Adicionar jogos à sua biblioteca pessoal (faltante);
-  - Enviar mensagens para o suporte da plataforma;
-  - Visualizar e editar as informações da própria conta;
-  - Acessar detalhes completos sobre os jogos disponíveis.
-    
-Além disso, o sistema possui um painel administrativo, onde o administrador tem permissões para:
+Laravel is accessible, powerful, and provides tools required for large, robust applications.
 
-  - Criar novos jogos no catálogo;
-  - Listar os jogos já existentes;
-  - Remover jogos da plataforma.
+## Learning Laravel
 
-# ⚙️ Instalação e Configuração
-  - PHP 8.0 ou superior;
-  - Git instalado;
-  - MySQL ou MariaDB;
-  - Servidor Web (Apache ou similar);
-  - VSCode (Ou outro editor);
-  - Composer;
-  - Navegador moderno.
+Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
 
-## Copie o repositório
-<pre>git clone https://github.com/Valeranovicz1/Trabalho-Web-Servidor.git 
-cd Trabalho-Web-Servidor.git </pre>
+You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
 
-## Inicie o servidor
-Se estiver usando XAMPP:
-Inicie o Apache e o MySQL;
+If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 2000 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
 
-## Configurando o Apache
-Clique no botão config e selecione o Apache(httpd.conf)
-Tire o # da linha LoadModule rewrite_module modules/mod_rewrite.so
-Procure por AllowOverride e modifique para AllowOverride All
+## Laravel Sponsors
 
-## Configurando o Banco de Dados
-Acesse o site:
-<pre>http://localhost/phpmyadmin/index.php</pre>
-Crie um novo banco de dados chamado et_gamas
-Clique na aba importar e selecione o arquivo BancoDadosSQL e execute
+We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
 
-## Instalando o Composer
-Entre no site:
-<pre> https://getcomposer.org/download/</pre>
-Selecione a opção de download desejada
-Execute o instalador do composer
-Configure o composer e o selecione o executável php dentro da pasta xampp\php e finalize o processo
+### Premium Partners
 
+- **[Vehikl](https://vehikl.com/)**
+- **[Tighten Co.](https://tighten.co)**
+- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
+- **[64 Robots](https://64robots.com)**
+- **[Cubet Techno Labs](https://cubettech.com)**
+- **[Cyber-Duck](https://cyber-duck.co.uk)**
+- **[Many](https://www.many.co.uk)**
+- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
+- **[DevSquad](https://devsquad.com)**
+- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
+- **[OP.GG](https://op.gg)**
+- **[WebReinvent](https://webreinvent.com/?utm_source=laravel&utm_medium=github&utm_campaign=patreon-sponsors)**
+- **[Lendio](https://lendio.com)**
 
-## Configurando o Composer no VSCode
-Dentro do VSCode abra a pasta do arquivo do projeto localizada em:
-<pre>C:\xampp\htdocs\Trabalho-Web-Servidor</pre>
-Agora dentro do terminal execute os seguintes comandos:
-<pre> composer init </pre>
-Configure o seu composer.
-<pre>composer install
-composer dump-autoload
-composer require pecee/simple-router
-Você deve inserir o autoload no composer.json:
-    "autoload": {
-    "psr-4": {
-      "App\\Model\\": "Model/",
-      "App\\Controllers\\": "controllers/"
-    }
-  }
+## Contributing
 
-composer dump-autoload
-php -S localhost:8000</pre>
+Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
 
-Acesse no navegador:
-http://localhost:8000/
-  
+## Code of Conduct
 
+In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
 
-## 📂 Estrutura do Projeto
-- Model: Contém as classes responsáveis pela representação dos dados e regras de negócio da aplicação. 
-- controllers: Contém os arquivos responsáveis pela lógica da aplicação.
-- view: Inclui os arquivos de interface do usuário (HTML e PHP).
-- storage: Contém as imagens dos jogos.
-- assets: Contém os recursos estáticos da aplicação (CSS,JS e Imagens).
+## Security Vulnerabilities
+
+If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+
+## License
+
+The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
