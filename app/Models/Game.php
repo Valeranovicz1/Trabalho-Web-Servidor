@@ -19,13 +19,17 @@ class Game extends Model
         'company_id',
     ];
 
-    public function company(){
-
-        return $this->belongsTo(Company::class);
-    }
+public function company()
+{
+    return $this->belongsTo(User::class, 'company_id');
+}
 
     public function owners()
     {
         return $this->belongsToMany(User::class, 'library', 'game_id', 'user_id');
     }
+    public function getRouteKeyName()
+{
+    return 'id';
+}
 }

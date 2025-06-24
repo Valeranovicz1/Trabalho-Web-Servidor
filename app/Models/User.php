@@ -12,28 +12,39 @@ class User extends Authenticatable
 
     protected $fillable = [
         'name',
-        'password',
-        'user_type',
-        'nickname',
         'email',
+        'nickname',
+        'password',
+        'type' // Adicione este campo se existir
     ];
 
     protected $hidden = ['password', 'remember_token'];
-    protected $casts = ['password' => 'hashed'];
 
+    // Mantenha apenas uma relação para client
     public function client()
     {
         return $this->hasOne(Client::class, 'user_id');
     }
 
+    // Mantenha apenas uma relação para company
     public function company()
     {
         return $this->hasOne(Company::class, 'user_id');
     }
 
-    public function libraryGames()
+    // Relação para carrinho
+public function cartItems()
+{
+    return $this->hasMany(Cart::class, 'user_id');
+}
+
+    // Relação para biblioteca
+    public function libraryItems()
     {
-        return $this->belongsToMany(Game::class, 'library', 'user_id', 'game_id')
-                    ->withTimestamps();
+        return $this->hasMany(Library::class, 'user_id');
     }
+   public function games()
+{
+    return $this->hasMany(Game::class, 'company_id');
+}
 }

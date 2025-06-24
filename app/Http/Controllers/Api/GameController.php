@@ -9,16 +9,24 @@ use Illuminate\Support\Facades\Auth;
 
 class GameController extends Controller
 {
-
     public function index(Request $request)
     {
-        $games = $request->user()->games()->paginate(15);
-
+        // Verifica se o usuário é uma empresa
+        if ($request->user()->type !== 'company') {
+            return response()->json(['message' => 'Acesso não autorizado.'], 403);
+        }
+        
+        $games = Game::where('company_id', $request->user()->id)->paginate(15);
         return response()->json($games);
     }
  
     public function store(Request $request)
     {
+        // Verifica se o usuário é uma empresa
+        if ($request->user()->type !== 'company') {
+            return response()->json(['message' => 'Acesso não autorizado.'], 403);
+        }
+        
         $validatedData = $request->validate([
             'name' => 'required|string|max:255|unique:games',
             'description' => 'required|string|max:255',
@@ -26,18 +34,27 @@ class GameController extends Controller
             'image' => 'nullable|string',
             'price' => 'required|numeric|min:0',
             'classification' => 'required|string|max:50',
- 
         ]);
 
-        $game = $request->user()->games()->create($validatedData);
+        $game = new Game();
+        $game->name = $validatedData['name'];
+        $game->description = $validatedData['description'];
+        $game->category = $validatedData['category'];
+        $game->image = $validatedData['image'] ?? null;
+        $game->price = $validatedData['price'];
+        $game->classification = $validatedData['classification'];
+        $game->company_id = $request->user()->id;
+        $game->company_user_id = $request->user()->id;
+        $game->save();
 
-        return response()->json($game);
+        return response()->json($game, 201);
     }
 
     public function show(Game $game)
     {
-        if (Auth::id() !== $game->id_empresa) {
-            return response()->json(['message' => 'Acesso não autorizado.']);
+        // Verifica se o usuário é o proprietário do jogo
+        if (Auth::id() !== $game->company_id) {
+            return response()->json(['message' => 'Acesso não autorizado.'], 403);
         }
 
         return response()->json($game);
@@ -45,13 +62,13 @@ class GameController extends Controller
 
     public function update(Request $request, Game $game)
     {
-
+        // Verificação de propriedade
         if ($request->user()->id !== $game->company_id) {
-            return response()->json(['message' => 'Acesso não autorizado.']); 
+            return response()->json(['message' => 'Acesso não autorizado.'], 403);
         }
 
         $validatedData = $request->validate([
-            'name' => 'required','string','max:255',
+            'name' => 'required|string|max:255|unique:games,name,' . $game->id,
             'description' => 'required|string|max:255',
             'category' => 'required|string|max:100',
             'image' => 'nullable|string',
@@ -60,19 +77,17 @@ class GameController extends Controller
         ]);
 
         $game->update($validatedData);
-
         return response()->json($game);
     }
-
+    
     public function destroy(Request $request, Game $game)
     {
-
-        if ($request->user()->id !== $game->id_empresa) {
-            return response()->json(['message' => 'Acesso não autorizado.']);
+        // Verificação de propriedade
+        if ($request->user()->id !== $game->company_id) {
+            return response()->json(['message' => 'Acesso não autorizado.'], 403);
         }
 
         $game->delete();
-
-        return response()->json(null);
+        return response()->json(null, 204);
     }
 }

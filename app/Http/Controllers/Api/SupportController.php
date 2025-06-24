@@ -9,10 +9,15 @@ use Illuminate\Http\Request;
 class SupportController extends Controller
 {
 
-    public function index()
-    {
-        
-    }
+public function index(Request $request)
+{
+    $tickets = $request->user()->supportTickets()->paginate(10);
+    
+    return response()->json([
+        'status' => 'success',
+        'data' => $tickets
+    ]);
+}
 
     public function store(Request $request)
     {

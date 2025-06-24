@@ -9,38 +9,38 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\ValidationException;
 use Illuminate\Validation\Rules\Password;
+use App\Models\Client;
 
 class AuthController extends Controller
 {
-    public function registerClient(Request $request)
-    {
+public function registerClient(Request $request)
+{
+    $validatedData = $request->validate([
+        'name' => 'required|string|max:255',
+        'email' => 'required|string|email|max:255|unique:users,email',
+        'nickname' => 'required|string|max:100|unique:users,nickname',
+        'password' => ['required', 'confirmed', Password::min(8)], 
+        'date_of_birth' => 'required|date_format:Y-m-d', 
+    ]);
 
-        $validatedData = $request->validate([
-            'name' => 'required|string|max:255',
-            'email' => 'required|string|email|max:255|unique:users,email',
-            'nickname' => 'required|string|max:100|unique:users,nickname',
-            'password' => ['required', 'confirmed', Password::min(8)], 
-            'date_of_birth' => 'required|date_format:Y-m-d', 
-        ]);
+    try {
+        $user = DB::transaction(function () use ($validatedData) {
+            $user = User::create([
+    'name' => $validatedData['name'],
+    'email' => $validatedData['email'],
+    'nickname' => $validatedData['nickname'],
+    'password' => Hash::make($validatedData['password']), // Garanta que está usando Hash::make
+    'type' => 'client',
+]);
 
-        try {
+            Client::create([
+                'user_id' => $user->id,
+                'date_of_birth' => $validatedData['date_of_birth']
+            ]);
 
-            $user = DB::transaction(function () use ($validatedData) {
+            return $user;
+        });
 
-                $user = User::create([
-                    'name' => $validatedData['name'],
-                    'email' => $validatedData['email'],
-                    'nickname' => $validatedData['nickname'],
-                    'password' => Hash::make($validatedData['password']),
-                    'type' => 'client', 
-                ]);
-
-                $user->client()->create([
-                    'date_of_birth' => $validatedData['date_of_birth'],
-                ]);
-
-                return $user;
-            });
 
             $token = $user->createToken('auth_token')->plainTextToken;
 
@@ -51,53 +51,59 @@ class AuthController extends Controller
                 'user' => $user->load('client'), 
             ]);
 
-        } catch (\Exception $e) {
-            return response()->json(['message' => 'Erro interno ao registrar cliente.'], 500);
-        }
+        }  catch (\Exception $e) {
+        return response()->json([
+            'message' => 'Erro interno ao registrar cliente.',
+            'error' => $e->getMessage() // Para debug
+        ], 500);
     }
+}
 
     public function registerCompany(Request $request)
-    {
+{
+    $validatedData = $request->validate([
+        'name' => 'required|string|max:255',
+        'email' => 'required|string|email|max:255|unique:users,email',
+        'nickname' => 'required|string|max:100|unique:users,nickname',
+        'password' => ['required', 'confirmed', Password::min(8)],
+        'website' => 'nullable|url',
+        'cnpj' => 'required|string|size:14|unique:companies,cnpj' // Adicione esta linha
+    ]);
 
-        $validatedData = $request->validate([
-            'name' => 'required|string|max:255',
-            'email' => 'required|string|email|max:255|unique:users,email',
-            'nickname' => 'required|string|max:100|unique:users,nickname',
-            'password' => ['required', 'confirmed', Password::min(8)],
-            'website' => 'nullable|url',
-        ]);
-
-        try {
-            $companyUser = DB::transaction(function () use ($validatedData) {
-                $user = User::create([
-                    'name' => $validatedData['name'],
-                    'email' => $validatedData['email'],
-                    'nickname' => $validatedData['nickname'],
-                    'password' => Hash::make($validatedData['password']),
-                    'type' => 'company',
-                ]);
-
-                $user->company()->create([
-                    'website' => $validatedData['website'],
-                    'cnpj' => $validatedData['cnpj'],
-                ]);
-
-                return $user;
-            });
-
-            $token = $companyUser->createToken('auth_token')->plainTextToken;
-
-            return response()->json([
-                'message' => 'Empresa registrada com sucesso!',
-                'access_token' => $token,
-                'token_type' => 'Bearer',
-                'user' => $companyUser->load('company'),
+    try {
+        $companyUser = DB::transaction(function () use ($validatedData) {
+            $user = User::create([
+                'name' => $validatedData['name'],
+                'email' => $validatedData['email'],
+                'nickname' => $validatedData['nickname'],
+                'password' => Hash::make($validatedData['password']),
+                'type' => 'company',
             ]);
 
-        } catch (\Exception $e) {
-            return response()->json(['message' => 'Erro interno ao registrar empresa.'], 500);
-        }
+            $user->company()->create([
+                'website' => $validatedData['website'],
+                'cnpj' => $validatedData['cnpj'] // Adicione esta linha
+            ]);
+
+            return $user;
+        });
+
+        $token = $companyUser->createToken('auth_token')->plainTextToken;
+
+        return response()->json([
+            'message' => 'Empresa registrada com sucesso!',
+            'access_token' => $token,
+            'token_type' => 'Bearer',
+            'user' => $companyUser->load('company')
+        ]);
+
+    } catch (\Exception $e) {
+        return response()->json([
+            'message' => 'Erro interno ao registrar empresa.',
+            'error' => $e->getMessage() // Para debug
+        ], 500);
     }
+}
 
     public function login(Request $request)
     {
