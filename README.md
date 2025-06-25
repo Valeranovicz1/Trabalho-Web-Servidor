@@ -1,24 +1,25 @@
-#Sobre o Projeto
+# Sobre o Projeto
 A API é construída em Laravel. Ela oferece endpoints para as operações de POST, PUT, GET, e DELETE , além de um sistema de autenticação via Laravel Sanctum.
 
 #Tecnologias Utilizadas:
-PHP
-Laravel (Framework)
-MySQL (Banco de Dados)
-Laravel Sanctum (Autenticação de API)
-Funcionalidades Principais:
-Gerenciamento de Usuários (Clientes e Empresas)
-Cadastro e Gestão de Jogos
-Gerenciamento de Biblioteca de Jogos
-Sistema de Suporte
-Carrinho de Compras
-Autenticação via Token (Sanctum)
+-PHP
+-Laravel (Framework)
+-MySQL (Banco de Dados)
+-Laravel Sanctum (Autenticação de API)
 
-#Requisitos de Instalação
-PHP: Versão 8.1 ou superior.
-Composer.
-MySQL: Servidor de banco de dados (ou MariaDB, PostgreSQL, etc.).
-XAMPP.
+## Funcionalidades Principais:
+-Gerenciamento de Usuários (Clientes e Empresas)
+-Cadastro e Gestão de Jogos
+-Gerenciamento de Biblioteca de Jogos
+-Sistema de Suporte
+-Carrinho de Compras
+-Autenticação via Token (Sanctum)
+
+## Requisitos de Instalação
+-PHP: Versão 8.1 ou superior.
+-Composer.
+-MySQL: Servidor de banco de dados (ou MariaDB, PostgreSQL, etc.).
+-XAMPP.
 
 #Passos Para Instalação:
 1- Clone o Repositório:
