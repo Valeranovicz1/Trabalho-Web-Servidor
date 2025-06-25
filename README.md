@@ -37,12 +37,12 @@ A API é construída em Laravel. Ela oferece endpoints para as operações de PO
     Crie o Banco de Dados chamado de et_games
 
 4-Rode as Migrations
-
     Execute o seguinte comando:
+    
     php artisan migrate
 
 5-Inicie o Servidor
-
     Execute o comando:
+    
     php artisan serve
 
