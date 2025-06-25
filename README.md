@@ -28,21 +28,21 @@ A API é construída em Laravel. Ela oferece endpoints para as operações de PO
     git clone https://github.com/Valeranovicz1/Trabalho-Web-Servidor.git
     cd Trabalho-Web-Servidor
 
-2-Instale o Composer
+2- Instale o Composer
 
     composer install
 
-3-Criação do Banco de Dados
+3- Criação do Banco de Dados
 
     Crie o Banco de Dados chamado de et_games
 
-4-Rode as Migrations
-    Execute o seguinte comando:
+4- Rode as Migrations
+    - Execute o seguinte comando:
     
     php artisan migrate
 
-5-Inicie o Servidor
-    Execute o comando:
+5- Inicie o Servidor: 
+    - Execute o comando:
     
     php artisan serve
 
