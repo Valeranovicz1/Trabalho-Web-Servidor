@@ -21,8 +21,9 @@ A API é construída em Laravel. Ela oferece endpoints para as operações de PO
 -MySQL: Servidor de banco de dados (ou MariaDB, PostgreSQL, etc.).
 -XAMPP.
 
-#Passos Para Instalação:
+## Passos Para Instalação:
 1- Clone o Repositório:
+    
     git clone https://github.com/Valeranovicz1/Trabalho-Web-Servidor.git
     cd Trabalho-Web-Servidor
 
